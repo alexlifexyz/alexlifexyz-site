@@ -331,7 +331,9 @@ a:hover {
 
 .btn-primary:hover {
   background: var(--accent);
+  color: #ffffff; /* Explicitly set to white to avoid contrast issues */
   transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(30, 64, 175, 0.2);
 }
 
 .btn-outline {
@@ -341,8 +343,13 @@ a:hover {
 }
 
 .btn-outline:hover {
-  border-color: var(--text);
-  background: var(--surface-muted);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.btn:active {
+  transform: translateY(0) scale(0.98);
 }
 
 /* Prose Content */
