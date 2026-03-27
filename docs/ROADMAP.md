@@ -18,6 +18,13 @@
 - deploy to Cloudflare Pages
 - connect custom domain
 
+Current status:
+
+- MVP is deployed to `https://alexlifexyz-site.pages.dev/`
+- visual polish is still pending
+- content import is still pending
+- custom domain is still pending
+
 ## Phase 2: Content Operations
 
 - define article frontmatter schema
@@ -45,4 +52,3 @@
 - evaluate small interactive demos
 - evaluate AI app showcase pages
 - decide whether dynamic features justify upgrading architecture
-
