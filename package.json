@@ -8,7 +8,9 @@
     "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check"
+    "check": "astro check",
+    "cf:deploy": "npm run build && npx wrangler pages deploy dist --project-name alexlifexyz-site",
+    "cf:deploy:branch": "npm run build && npx wrangler pages deploy dist --project-name alexlifexyz-site --branch preview"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.6.0",

@@ -12,6 +12,13 @@ GitHub repo is live:
 
 - `https://github.com/alexlifexyz/alexlifexyz-site`
 
+Deployment preparation is now in place:
+
+- `.node-version`
+- `wrangler.jsonc`
+- `docs/DEPLOYMENT.md`
+- Cloudflare deploy scripts in `package.json`
+
 ## Current Decisions In Effect
 
 - standalone repo
@@ -22,10 +29,10 @@ GitHub repo is live:
 ## Next Actions
 
 1. connect Cloudflare Pages
-2. replace placeholder site URL in `astro.config.mjs`
-3. import the first curated public article batch
-4. refine homepage copy and resume detail blocks
-5. add a production-ready contact / social block
+2. set real `SITE_URL`
+3. verify `pages.dev` deploy
+4. import the first curated public article batch
+5. refine homepage copy and resume detail blocks
 
 ## Handoff Rules
 
