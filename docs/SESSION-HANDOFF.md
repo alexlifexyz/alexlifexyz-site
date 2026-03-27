@@ -27,6 +27,14 @@ Deployment preparation is in place:
 - `docs/DEPLOYMENT.md`
 - Cloudflare deploy scripts in `package.json`
 
+First article batch is imported:
+
+- `001` 老 Java 看堆栈
+- `002` 被裁后去了国企外包
+- `003` 不会思考的程序员更先失业
+- `004` AI 三天做完 Demo 后的焦虑
+- `005` 35 岁 Java 想做 AI 应用和一人公司
+
 ## Current Decisions In Effect
 
 - standalone repo
@@ -38,9 +46,9 @@ Deployment preparation is in place:
 
 1. connect `alexai.top`
 2. set `SITE_URL=https://alexai.top`
-3. import the first curated public article batch
-4. refine homepage copy and resume detail blocks
-5. merge or manually apply the Gemini visual redesign once it is stable
+3. refine homepage copy and resume detail blocks
+4. merge or manually apply the Gemini visual redesign once it is stable
+5. add the next batch of evergreen articles or project case studies
 
 ## Handoff Rules
 
