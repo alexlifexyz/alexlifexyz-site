@@ -15,33 +15,56 @@ const { Content } = await render(project);
 ---
 
 <BaseLayout title={`${project.data.title} | Alex`} description={project.data.summary}>
-  <div class="content-wrap">
-    <article class="panel content-card prose">
-      <span class="eyebrow">{project.data.status}</span>
-      <h1>{project.data.title}</h1>
-      <p class="lead">{project.data.summary}</p>
-      <div class="tag-row">
-        {project.data.stack.map((item) => (
-          <span class="tag">{item}</span>
-        ))}
-      </div>
-      {
-        project.data.links && (
-          <div class="actions">
-            {project.data.links.repo && (
-              <a class="button" href={project.data.links.repo} target="_blank" rel="noreferrer">
-                Repository
-              </a>
-            )}
-            {project.data.links.demo && (
-              <a class="button" href={project.data.links.demo} target="_blank" rel="noreferrer">
-                Demo
-              </a>
-            )}
+  <div class="content-wrap" style="padding: 6rem 0 10rem;">
+    <article>
+      <header style="margin-bottom: 5rem;">
+        <div class="mono" style="font-size: 0.9rem; color: var(--accent); margin-bottom: 1.5rem; font-weight: 600;">
+          {project.data.year} · {project.data.status}
+        </div>
+        <h1 style="font-size: 3.5rem; letter-spacing: -0.05em; margin-bottom: 2rem;">{project.data.title}</h1>
+        <p class="hero-lead" style="margin-bottom: 3rem;">
+          {project.data.summary}
+        </p>
+        
+        <div style="display: flex; flex-wrap: wrap; gap: 3rem; align-items: flex-start;">
+          <div>
+            <h4 style="font-family: var(--mono); font-size: 0.75rem; text-transform: uppercase; color: var(--text-dim); margin-bottom: 1rem;">Stack</h4>
+            <div class="tag-row">
+              {project.data.stack.map((item) => (
+                <span class="tag">{item}</span>
+              ))}
+            </div>
           </div>
-        )
-      }
-      <Content />
+          
+          {project.data.links && (
+            <div>
+              <h4 style="font-family: var(--mono); font-size: 0.75rem; text-transform: uppercase; color: var(--text-dim); margin-bottom: 1rem;">Links</h4>
+              <div style="display: flex; gap: 1.5rem;">
+                {project.data.links.repo && (
+                  <a href={project.data.links.repo} target="_blank" class="mono" style="font-size: 0.85rem; font-weight: 600;">Repository ↗</a>
+                )}
+                {project.data.links.demo && (
+                  <a href={project.data.links.demo} target="_blank" class="mono" style="font-size: 0.85rem; font-weight: 600;">Live Demo ↗</a>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+      </header>
+
+      <div class="prose" style="padding-top: 4rem; border-top: 1px solid var(--line);">
+        <Content />
+      </div>
+
+      <footer style="margin-top: 8rem; padding-top: 4rem; border-top: 1px dashed var(--line-strong);">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <h4 style="margin-bottom: 0.5rem;">想了解更多关于该项目的内容？</h4>
+            <p style="font-size: 0.9rem; color: var(--text-muted);">如果你对这个项目感兴趣，或者有类似的需求，欢迎与我沟通。</p>
+          </div>
+          <a href="/projects" class="btn btn-outline" style="font-size: 0.85rem;">返回项目列表</a>
+        </div>
+      </footer>
     </article>
   </div>
 </BaseLayout>

@@ -15,20 +15,38 @@ const { Content } = await render(post);
 ---
 
 <BaseLayout title={`${post.data.title} | Alex`} description={post.data.description}>
-  <div class="content-wrap">
-    <article class="panel content-card prose">
-      <span class="eyebrow">{post.data.category}</span>
-      <h1>{post.data.title}</h1>
-      <p class="lead">{post.data.description}</p>
-      <time datetime={post.data.pubDate.toISOString()}>
-        {post.data.pubDate.toLocaleDateString("zh-CN")}
-      </time>
-      <div class="tag-row">
-        {post.data.tags.map((tag) => (
-          <span class="tag">{tag}</span>
-        ))}
+  <div class="content-wrap" style="padding: 6rem 0 10rem;">
+    <article>
+      <header style="margin-bottom: 4rem; text-align: center;">
+        <div class="mono" style="font-size: 0.9rem; color: var(--accent); margin-bottom: 1.5rem; font-weight: 600;">
+          {post.data.category} · {post.data.pubDate.toLocaleDateString("zh-CN", { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/\//g, '.')}
+        </div>
+        <h1 style="font-size: clamp(2rem, 5vw, 3rem); line-height: 1.2; margin-bottom: 2rem; letter-spacing: -0.03em;">
+          {post.data.title}
+        </h1>
+        <p style="font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.6;">
+          {post.data.description}
+        </p>
+        <div class="tag-row" style="justify-content: center;">
+          {post.data.tags.map((tag) => (
+            <span class="tag">#{tag}</span>
+          ))}
+        </div>
+      </header>
+      
+      <div class="prose">
+        <Content />
       </div>
-      <Content />
+      
+      <footer style="margin-top: 8rem; padding-top: 4rem; border-top: 1px dashed var(--line-strong);">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <h4 style="margin-bottom: 0.5rem;">Alex</h4>
+            <p style="font-size: 0.9rem; color: var(--text-muted);">10 年 Java 后端，正在转向 AI 应用和独立开发。</p>
+          </div>
+          <a href="/writing" class="btn btn-outline" style="font-size: 0.85rem;">返回文章列表</a>
+        </div>
+      </footer>
     </article>
   </div>
 </BaseLayout>

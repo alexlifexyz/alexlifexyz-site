@@ -4,68 +4,93 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 const posts = (await getCollection("posts", ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
-const featuredPosts = posts.filter((post) => post.data.featured).slice(0, 3);
+const featuredPosts = posts.slice(0, 3);
 
-const projects = (await getCollection("projects")).slice(0, 2);
+const projects = (await getCollection("projects")).slice(0, 3);
 ---
 
-<BaseLayout title="Alex | Personal Site" path="/">
+<BaseLayout title="Alex | 10年Java -> AI应用 & 独立开发" path="/">
   <section class="hero">
-    <div class="page-shell hero-grid">
-      <div class="panel hero-main stack">
-        <span class="eyebrow">MVP in progress</span>
-        <h1>一个做了 10 年 Java 的人，正在把自己往 AI 应用和独立开发上接。</h1>
-        <p class="lead">
-          这里不是纯博客，也不是模板化作品集。它会同时承载我的写作、项目、公开简历和正在发生的职业转向。
+    <div class="page-shell hero-identity">
+      <div class="hero-content">
+        <span class="section-label mono">Engineering identity</span>
+        <h1>一个 10 年 Java 后端，<br/>正在转向 AI 应用和独立开发。</h1>
+        <p class="hero-lead">
+          这里记录我的思考、正在做的项目、以及一个后端工程师在 AI 时代的职业转向路径。不端着，不油腻，只聊真实落地。
         </p>
-        <div class="actions">
-          <a class="button primary" href="/writing">Read the writing</a>
-          <a class="button" href="/resume">Open resume</a>
+        <div style="margin-top: 3.5rem; display: flex; gap: 1.25rem;">
+          <a class="btn btn-primary" href="/writing">阅读文章</a>
+          <a class="btn btn-outline" href="/resume">查看简历</a>
         </div>
       </div>
-      <aside class="panel hero-side stack">
-        <div class="meta-list">
-          <div>
-            <strong>Current identity</strong>
-            <p>10 年 Java 后端，大厂裁员后继续在外包环境里工作，同时转向 AI 应用和独立开发。</p>
-          </div>
-          <div>
-            <strong>What this site is for</strong>
-            <p>沉淀写作，展示项目，帮助面试，也帮助我自己把方向慢慢做实。</p>
-          </div>
-          <div>
-            <strong>Current build target</strong>
-            <p>Astro + Cloudflare Pages。先把内容和身份搭稳，再慢慢加功能。</p>
-          </div>
+      
+      <div class="hero-dashboard">
+        <div class="dash-header">
+          <div class="dash-dot red"></div>
+          <div class="dash-dot yellow"></div>
+          <div class="dash-dot green"></div>
         </div>
-      </aside>
+        <div class="dash-line">
+          <span class="dash-key">const</span> alex = &#123;
+        </div>
+        <div class="dash-line" style="padding-left: 1.5rem;">
+          <span class="dash-key">role</span>: <span class="dash-val">"Senior Backend Engineer"</span>,
+        </div>
+        <div class="dash-line" style="padding-left: 1.5rem;">
+          <span class="dash-key">experience</span>: <span class="dash-val">"10y+ Java Ecosystem"</span>,
+        </div>
+        <div class="dash-line" style="padding-left: 1.5rem;">
+          <span class="dash-key">transitioning_to</span>: <span class="dash-val">"AI App & Indie Hacking"</span>,
+        </div>
+        <div class="dash-line" style="padding-left: 1.5rem;">
+          <span class="dash-key">building</span>: [<span class="dash-val">"Alex.xyz"</span>, <span class="dash-val">"Content Hub"</span>],
+        </div>
+        <div class="dash-line" style="padding-left: 1.5rem;">
+          <span class="dash-key">status</span>: <span class="dash-val">"Open for Collaboration"</span>
+        </div>
+        <div class="dash-line">
+          &#125;;
+        </div>
+        <div class="dash-line" style="margin-top: 1rem;">
+          <span class="dash-comment">// Currently deep diving into LLM Orchestration</span>
+        </div>
+        <div class="dash-line">
+          <span class="dash-key">alex</span>.focusOn(<span class="dash-val">"Real-world AI value"</span>);
+        </div>
+      </div>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" style="background: var(--surface-muted); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
     <div class="page-shell">
-      <div class="section-heading">
-        <div class="stack">
-          <span class="eyebrow">Featured writing</span>
-          <h2>先看我怎么写</h2>
+      <div class="section-header">
+        <span class="section-label mono">Featured Writing</span>
+        <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+          <h2>精选文章</h2>
+          <a href="/writing" class="mono" style="font-size: 0.8rem; font-weight: 600;">VIEW ALL -></a>
         </div>
-        <a href="/writing">All writing</a>
       </div>
-      <div class="card-grid">
+      
+      <div class="item-list">
         {
           featuredPosts.map((post) => (
-            <a class="panel post-card" href={`/writing/${post.slug}/`}>
-              <time datetime={post.data.pubDate.toISOString()}>
-                {post.data.pubDate.toLocaleDateString("zh-CN")}
-              </time>
-              <h3>{post.data.title}</h3>
-              <p class="lead">{post.data.description}</p>
-              <div class="tag-row">
-                {post.data.tags.map((tag) => (
-                  <span class="tag">{tag}</span>
-                ))}
+            <div class="list-item">
+              <div class="item-date">
+                {post.data.pubDate.toLocaleDateString("zh-CN", { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/\//g, '.')}
               </div>
-            </a>
+              <div class="item-body">
+                <a href={`/writing/${post.slug}/`} style="text-decoration: none;">
+                  <h3>{post.data.title}</h3>
+                </a>
+                <p>{post.data.description}</p>
+                <div class="tag-row">
+                  <span class="tag" style="background: var(--accent-soft); color: var(--accent); border-color: var(--accent-soft);">{post.data.category}</span>
+                  {post.data.tags.slice(0, 2).map((tag) => (
+                    <span class="tag">{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
           ))
         }
       </div>
@@ -74,28 +99,67 @@ const projects = (await getCollection("projects")).slice(0, 2);
 
   <section class="section">
     <div class="page-shell">
-      <div class="section-heading">
-        <div class="stack">
-          <span class="eyebrow">Projects</span>
-          <h2>我正在把哪些东西做实</h2>
+      <div class="section-header">
+        <span class="section-label mono">Projects</span>
+        <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+          <h2>代表项目</h2>
+          <a href="/projects" class="mono" style="font-size: 0.8rem; font-weight: 600;">VIEW ALL -></a>
         </div>
-        <a href="/projects">All projects</a>
       </div>
+      
       <div class="card-grid">
         {
           projects.map((project) => (
-            <a class="panel project-card" href={`/projects/${project.slug}/`}>
-              <span class="meta">{project.data.year} · {project.data.status}</span>
-              <h3>{project.data.title}</h3>
-              <p class="lead">{project.data.summary}</p>
-              <div class="tag-row">
-                {project.data.stack.map((item) => (
-                  <span class="tag">{item}</span>
-                ))}
+            <a class="card-link" href={`/projects/${project.slug}/`}>
+              <div class="panel" style="padding: 2rem; height: 100%; display: flex; flex-direction: column;">
+                <div class="mono" style="font-size: 0.75rem; color: var(--text-dim); margin-bottom: 1rem; display: flex; justify-content: space-between;">
+                  <span>{project.data.year}</span>
+                  <span style="color: var(--accent);">{project.data.status}</span>
+                </div>
+                <h3 style="margin-bottom: 1rem; font-size: 1.25rem;">{project.data.title}</h3>
+                <p style="font-size: 0.95rem; color: var(--text-muted); flex-grow: 1; margin-bottom: 1.5rem;">{project.data.summary}</p>
+                <div class="tag-row">
+                  {project.data.stack.map((item) => (
+                    <span class="tag" style="font-size: 0.65rem;">{item}</span>
+                  ))}
+                </div>
               </div>
             </a>
           ))
         }
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="border-top: 1px solid var(--line); background: #fafafa;">
+    <div class="page-shell">
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;">
+        <div>
+          <span class="section-label mono">Now</span>
+          <h2>正在关注</h2>
+          <p style="margin-top: 1.5rem; font-size: 1.1rem; color: var(--text-muted); line-height: 1.8;">
+            正在外包环境里沉淀 AI 应用的落地方案，同时在构建这套个人内容 Hub。我更看重技术在真实业务场景下的生命力，而不是纯粹的炫技。
+          </p>
+          <div style="margin-top: 2.5rem; display: flex; gap: 1.5rem; align-items: center;">
+            <a class="btn btn-outline" href="/now">详细状态</a>
+            <span class="mono" style="font-size: 0.8rem; color: var(--text-dim);">Last updated: 2026.03.27</span>
+          </div>
+        </div>
+        <div class="panel" style="padding: 2.5rem; border-style: dashed; background: var(--surface);">
+          <div class="mono" style="font-size: 0.85rem; line-height: 2;">
+            <div style="color: var(--accent); font-weight: 600; margin-bottom: 1rem;">// Modern Stack Exploration</div>
+            <div style="display: grid; grid-template-columns: 80px 1fr; gap: 0.5rem;">
+              <span style="color: var(--text-dim);">[LLM]</span>
+              <span>Claude 3.5 / GPT-4o</span>
+              <span style="color: var(--text-dim);">[ARCH]</span>
+              <span>RAG / Multi-Agent</span>
+              <span style="color: var(--text-dim);">[LANG]</span>
+              <span>Java / Python / TS</span>
+              <span style="color: var(--text-dim);">[INFRA]</span>
+              <span>CF Workers / Supabase</span>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>

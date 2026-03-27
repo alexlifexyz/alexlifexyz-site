@@ -3,23 +3,44 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="About | Alex" path="/about">
-  <div class="content-wrap">
-    <section class="panel content-card prose">
-      <span class="eyebrow">About</span>
-      <h1>我是谁</h1>
-      <p>
-        我做了 10 年 Java 后端，待过大厂，也经历过裁员。现在一边继续工作，一边把自己往 AI
-        应用和独立开发上接。
-      </p>
-      <p>
-        这个站会比公众号更完整一些。它会把我的文章、项目、公开简历和正在发生的职业转向放到同一个地方。
-      </p>
-      <h2>我现在最关注的几件事</h2>
-      <ul>
-        <li>AI 时代老后端还剩下哪些真正值钱的能力</li>
-        <li>怎么把工程判断接到 AI 应用和真实场景里</li>
-        <li>怎么慢慢从被动执行，转向更主动的项目和产品位置</li>
-      </ul>
-    </section>
+  <div class="content-wrap" style="padding: 8rem 0 10rem;">
+    <article>
+      <header style="margin-bottom: 5rem;">
+        <span class="section-label mono">Identity / Background</span>
+        <h1 style="font-size: 3.5rem; letter-spacing: -0.05em; margin-bottom: 2rem;">关于我</h1>
+        <p class="hero-lead">
+          我做了 10 年 Java 后端，待过大厂，也经历过裁员。现在一边继续工作，一边把自己往 AI 应用和独立开发上接。
+        </p>
+      </header>
+      
+      <div class="prose">
+        <p>
+          这个站会比公众号更完整一些。它会把我的文章、项目、公开简历和正在发生的职业转向放到同一个地方。
+          我不希望它只是一个冰冷的展示页，而是我作为一个真实工程师，在技术浪潮中的真实路径记录。
+        </p>
+        
+        <h2>我现在最关注的几件事</h2>
+        <ul>
+          <li><strong>工程价值：</strong>AI 时代老后端还剩下哪些真正值钱的能力？如何把工程判断接到 AI 应用和真实场景里？</li>
+          <li><strong>职业转向：</strong>如何慢慢从被动执行的需求接收方，转向更主动的项目和产品位置？</li>
+          <li><strong>独立开发：</strong>如何在小规模场景下，构建具有生命力的技术解决方案。</li>
+        </ul>
+
+        <p style="margin-top: 4rem; color: var(--text-dim); font-style: italic;">
+          // 这里的每一行字，都是我真实踩过坑后的思考。
+        </p>
+      </div>
+
+      <div style="margin-top: 6rem; padding: 4rem; background: var(--surface-muted); border-radius: var(--radius-md); display: flex; justify-content: space-between; align-items: center;">
+        <div>
+          <h3 style="margin-bottom: 0.5rem;">想聊聊？</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">欢迎通过邮件或 GitHub 与我取得联系。</p>
+        </div>
+        <div style="display: flex; gap: 1rem;">
+          <a href="mailto:alex@example.com" class="btn btn-primary">发送邮件</a>
+          <a href="https://github.com/alexlife" target="_blank" class="btn btn-outline">GitHub</a>
+        </div>
+      </div>
+    </article>
   </div>
 </BaseLayout>

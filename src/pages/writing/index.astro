@@ -7,29 +7,45 @@ const posts = (await getCollection("posts", ({ data }) => !data.draft))
 ---
 
 <BaseLayout title="Writing | Alex" path="/writing">
-  <div class="content-wrap">
-    <div class="panel content-card">
-      <span class="eyebrow">Writing</span>
-      <h1>文章</h1>
-      <p class="lead">这里会逐步沉淀公众号之外真正值得长期保留的内容。</p>
-    </div>
-    <div class="section card-list">
+  <div class="content-wrap" style="padding: 6rem 0 10rem;">
+    <header style="margin-bottom: 6rem;">
+      <span class="section-label mono">Public Writing</span>
+      <h1 style="font-size: 3.5rem; letter-spacing: -0.05em; margin-bottom: 2rem;">公开写作</h1>
+      <p class="hero-lead">
+        这里沉淀我对技术演进、职业转型以及 AI 应用开发的长期思考。不仅仅是关于代码，更多是关于在不确定性中寻找确定性的判断。
+      </p>
+    </header>
+
+    <div class="item-list">
       {
         posts.map((post) => (
-          <a class="panel post-card" href={`/writing/${post.slug}/`}>
-            <time datetime={post.data.pubDate.toISOString()}>
-              {post.data.pubDate.toLocaleDateString("zh-CN")}
-            </time>
-            <h2>{post.data.title}</h2>
-            <p class="lead">{post.data.description}</p>
-            <div class="tag-row">
-              {post.data.tags.map((tag) => (
-                <span class="tag">{tag}</span>
-              ))}
+          <div class="list-item">
+            <div class="item-date">
+              {post.data.pubDate.toLocaleDateString("zh-CN", { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/\//g, '.')}
             </div>
-          </a>
+            <div class="item-body">
+              <a href={`/writing/${post.slug}/`} style="text-decoration: none;">
+                <h3 style="font-size: 1.5rem; margin-bottom: 1rem; transition: color 0.2s ease;">{post.data.title}</h3>
+              </a>
+              <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.7; margin-bottom: 1.5rem;">
+                {post.data.description}
+              </p>
+              <div class="tag-row">
+                <span class="tag" style="background: var(--accent-soft); color: var(--accent); border-color: var(--accent-soft);">{post.data.category}</span>
+                {post.data.tags.map((tag) => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
+            </div>
+          </div>
         ))
       }
+    </div>
+    
+    <div style="margin-top: 10rem; padding: 4rem; text-align: center; border: 1px dashed var(--line-strong); border-radius: var(--radius-md);">
+      <p style="color: var(--text-dim); font-family: var(--mono); font-size: 0.85rem;">
+        // 持续更新中，记录一个后端工程师的 AI 转型路径
+      </p>
     </div>
   </div>
 </BaseLayout>

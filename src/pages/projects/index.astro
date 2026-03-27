@@ -8,27 +8,41 @@ const projects = (await getCollection("projects")).sort((a, b) =>
 ---
 
 <BaseLayout title="Projects | Alex" path="/projects">
-  <div class="content-wrap">
-    <div class="panel content-card">
-      <span class="eyebrow">Projects</span>
-      <h1>项目</h1>
-      <p class="lead">先展示真正和我的方向有关的项目，不堆无关仓库。</p>
-    </div>
-    <div class="section card-list">
+  <div class="content-wrap" style="padding: 6rem 0 10rem;">
+    <header style="margin-bottom: 6rem;">
+      <span class="section-label mono">Engineering Projects</span>
+      <h1 style="font-size: 3.5rem; letter-spacing: -0.05em; margin-bottom: 2rem;">代表项目</h1>
+      <p class="hero-lead">先展示真正和我的方向有关的项目，不堆无关仓库。这里是我正在构建的 AI 应用、内容 Hub 以及一些实验性的工程尝试。</p>
+    </header>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2.5rem;">
       {
         projects.map((project) => (
-          <a class="panel project-card" href={`/projects/${project.slug}/`}>
-            <span class="meta">{project.data.year} · {project.data.status}</span>
-            <h2>{project.data.title}</h2>
-            <p class="lead">{project.data.summary}</p>
-            <div class="tag-row">
-              {project.data.stack.map((item) => (
-                <span class="tag">{item}</span>
-              ))}
+          <a class="card-link" href={`/projects/${project.slug}/`}>
+            <div class="panel" style="padding: 2.5rem; height: 100%; display: flex; flex-direction: column;">
+              <div class="mono" style="font-size: 0.8rem; color: var(--text-dim); margin-bottom: 1.5rem; display: flex; justify-content: space-between;">
+                <span>{project.data.year}</span>
+                <span style="color: var(--accent); font-weight: 600;">{project.data.status}</span>
+              </div>
+              <h3 style="font-size: 1.5rem; margin-bottom: 1.25rem; letter-spacing: -0.02em;">{project.data.title}</h3>
+              <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.7; flex-grow: 1; margin-bottom: 2rem;">
+                {project.data.summary}
+              </p>
+              <div class="tag-row">
+                {project.data.stack.map((item) => (
+                  <span class="tag">{item}</span>
+                ))}
+              </div>
             </div>
           </a>
         ))
       }
+    </div>
+    
+    <div style="margin-top: 10rem; padding: 5rem; text-align: center; border-radius: var(--radius-md); border: 2px dashed var(--line-strong);">
+      <h3 style="margin-bottom: 1rem;">更多代码实现</h3>
+      <p style="color: var(--text-muted); margin-bottom: 2.5rem;">我的大部分开源实践和工具脚本都在 GitHub 上公开展示。</p>
+      <a href="https://github.com/alexlife" target="_blank" class="btn btn-outline">Explore on GitHub</a>
     </div>
   </div>
 </BaseLayout>

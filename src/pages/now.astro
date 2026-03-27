@@ -3,16 +3,36 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
 <BaseLayout title="Now | Alex" path="/now">
-  <div class="content-wrap">
-    <section class="panel content-card prose">
-      <span class="eyebrow">Now</span>
-      <h1>现在在做什么</h1>
-      <ul>
-        <li>把公众号写作逐步沉淀成长期可检索的公开资产</li>
-        <li>搭这个个人站，让它同时服务写作、简历和项目展示</li>
-        <li>继续做 AI 应用和独立开发方向的尝试</li>
-        <li>观察哪些旧工程能力在 AI 时代仍然有稳定价值</li>
-      </ul>
-    </section>
+  <div class="content-wrap" style="padding: 8rem 0 10rem;">
+    <article>
+      <header style="margin-bottom: 6rem;">
+        <span class="section-label mono">Current Focus</span>
+        <h1 style="font-size: 3.5rem; letter-spacing: -0.05em; margin-bottom: 2rem;">正在做什么</h1>
+        <p class="hero-lead">
+          这是我目前最关注的事项，也是我在这段时间里投入大部分精力的地方。最后更新于 2026.03.27。
+        </p>
+      </header>
+      
+      <div class="prose">
+        <ul style="display: grid; gap: 2rem;">
+          <li>
+            <strong>内容沉淀：</strong>正在把过去在公众号散落的写作，逐步迁移并沉淀到这个个人站。希望这些内容不再是“刷过即忘”的，而是能够通过索引和搜索服务于有缘人。
+          </li>
+          <li>
+            <strong>工程实践：</strong>继续深挖 AI 应用的工程化落地。我目前在研究如何将 LLM Orchestration 更好地集成到现有的后端系统架构中。
+          </li>
+          <li>
+            <strong>个人站迭代：</strong>正如你现在看到的，我在持续通过 AI 辅助工具重构这个站点。这本身也是我对“新时代研发流”的一次深度实验。
+          </li>
+          <li>
+            <strong>职业观察：</strong>在日常的工作和交流中，持续记录并思考传统后端能力在 AI 时代的各种变体和生存空间。
+          </li>
+        </ul>
+        
+        <p style="margin-top: 6rem; padding: 2rem; border-left: 2px solid var(--accent); background: var(--accent-soft); font-size: 1rem; color: var(--text-muted);">
+          Inspired by Derek Sivers' <a href="https://nownownow.com/about" target="_blank" style="font-weight: 600;">/now page</a> movement.
+        </p>
+      </div>
+    </article>
   </div>
 </BaseLayout>

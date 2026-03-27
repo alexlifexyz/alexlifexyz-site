@@ -17,8 +17,8 @@ const navItems = [
   { href: "/", label: "Home" },
   { href: "/writing", label: "Writing" },
   { href: "/projects", label: "Projects" },
-  { href: "/about", label: "About" },
   { href: "/resume", label: "Resume" },
+  { href: "/about", label: "About" },
   { href: "/now", label: "Now" },
 ];
 ---
@@ -30,16 +30,16 @@ const navItems = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
   </head>
   <body>
     <header class="site-header">
       <div class="page-shell site-header-inner">
         <a class="brand" href="/">
           <span class="brand-mark">A</span>
-          <span class="brand-copy">
-            <span class="brand-title">Alex / Agent 降临派</span>
-            <span class="brand-subtitle">Java backend -> AI apps -> indie building</span>
-          </span>
+          <span class="brand-title">Alex<span class="text-dim">.xyz</span></span>
         </a>
         <nav class="site-nav" aria-label="Primary">
           {
@@ -57,7 +57,37 @@ const navItems = [
     </main>
     <footer class="site-footer">
       <div class="page-shell">
-        <p>Built for writing, credibility, and long-term iteration.</p>
+        <div class="footer-inner">
+          <div class="footer-brand">
+            <a class="brand" href="/" style="margin-bottom: 1.5rem;">
+              <span class="brand-mark">A</span>
+              <span class="brand-title">Alex<span class="text-dim">.xyz</span></span>
+            </a>
+            <p style="line-height: 1.8; color: var(--text-muted); max-width: 320px;">
+              10 年 Java 后端 -> AI 应用与独立开发。<br/>记录思考、项目与正在发生的职业转向。
+            </p>
+          </div>
+          <div class="footer-nav-col">
+            <h4>Content</h4>
+            <ul>
+              <li><a href="/writing">Writing</a></li>
+              <li><a href="/projects">Projects</a></li>
+              <li><a href="/now">Now</a></li>
+            </ul>
+          </div>
+          <div class="footer-nav-col">
+            <h4>Profile</h4>
+            <ul>
+              <li><a href="/resume">Resume</a></li>
+              <li><a href="/about">About</a></li>
+              <li><a href="https://github.com/alexlife" target="_blank">GitHub</a></li>
+            </ul>
+          </div>
+        </div>
+        <div style="margin-top: 6rem; padding-top: 2rem; border-top: 1px dashed var(--line-strong); font-size: 0.8rem; color: var(--text-dim); display: flex; justify-content: space-between; font-family: var(--mono);">
+          <p>&copy; {new Date().getFullYear()} Alex. Designed with engineering-first principles.</p>
+          <p>Built with Astro & LLM assistance.</p>
+        </div>
       </div>
     </footer>
   </body>

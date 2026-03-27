@@ -1,26 +1,195 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+
+const coreStrengths = [
+  {
+    title: "后端系统与稳定性",
+    body:
+      "做了 10 年 Java 后端，长期在真实业务环境里处理系统设计、链路稳定性、故障排查和性能问题。对“能跑”和“能长期稳定跑”之间的差别很敏感。",
+  },
+  {
+    title: "AI 应用工程化落地",
+    body:
+      "不是只停留在概念层面。我更关心 AI 应用如何接进真实场景，如何把 Demo 往可交付、可维护、可持续迭代的方向推。",
+  },
+  {
+    title: "工程判断与问题拆解",
+    body:
+      "经历过大厂、裁员和外包环境后，我更重视判断力本身：什么问题值得做，什么方案只是看起来很新，什么能力未来仍然有长期价值。",
+  },
+  {
+    title: "技术写作与结构化表达",
+    body:
+      "我持续写作，主题围绕 AI 时代程序员的生存、转型和自救。这不仅是内容输出，也是我整理判断、建立个人品牌和表达复杂问题的方式。",
+  },
+];
+
+const experiencePhases = [
+  {
+    phase: "大厂后端阶段",
+    period: "长期主力工程阶段",
+    summary:
+      "在大厂环境里做过核心后端工作，长期和复杂业务、线上稳定性、系统演进打交道。那段经历让我真正建立起系统感和工程责任感。",
+    bullets: [
+      "参与过核心业务系统开发与持续迭代",
+      "处理过线上故障、性能瓶颈和复杂链路问题",
+      "对接口设计、异常处理、并发与监控形成了稳定判断",
+    ],
+  },
+  {
+    phase: "裁员与外包阶段",
+    period: "现实压力与身份重估阶段",
+    summary:
+      "经历裁员之后继续在外包环境里工作。这段经历让我第一次真正意识到，问题不只是有没有工作，而是未来主动权会不会越来越少。",
+    bullets: [
+      "重新审视旧能力在新环境里的价值",
+      "更具体地感受到 AI 变化对程序员身份的冲击",
+      "开始从“继续上班”转向“重新定义自己”",
+    ],
+  },
+  {
+    phase: "AI 应用与独立开发转向",
+    period: "当前进行中",
+    summary:
+      "现在我把写作、个人站和 AI 应用尝试放在一起推进。目标不是包装一个新身份，而是把旧后端能力一点点接到新的产品形态里。",
+    bullets: [
+      "搭建内容工作流与个人站作为公开资产",
+      "持续输出关于 AI 时代程序员转型的写作",
+      "把工程判断力迁移到 AI 应用和独立开发方向",
+    ],
+  },
+];
+
+const techColumns = [
+  {
+    title: "Backend Core",
+    items: [
+      "Java / Spring Boot",
+      "MySQL / Redis",
+      "Kafka / MQ",
+      "接口设计 / 异常处理 / 性能优化",
+    ],
+  },
+  {
+    title: "AI Direction",
+    items: [
+      "LLM 应用思路",
+      "Prompt 与工作流编排",
+      "RAG / Agent 场景判断",
+      "AI 应用工程化落地",
+    ],
+  },
+  {
+    title: "Build & Writing",
+    items: [
+      "Astro / TypeScript",
+      "Git / GitHub / Cloudflare",
+      "Markdown-first workflow",
+      "技术写作 / 结构化表达",
+    ],
+  },
+];
 ---
 
 <BaseLayout title="Resume | Alex" path="/resume">
-  <div class="content-wrap">
-    <section class="panel content-card prose">
-      <span class="eyebrow">Resume</span>
-      <h1>公开简历</h1>
-      <p>
-        这页的目标不是替代正式 PDF 简历，而是让面试官和合作方更快理解我的路径、判断和代表工作。
+  <div class="content-wrap" style="padding: 8rem 0 12rem;">
+    <header style="margin-bottom: 6rem;">
+      <span class="section-label mono">Public Resume</span>
+      <h1 style="font-size: 3.5rem; letter-spacing: -0.05em; margin-bottom: 2rem;">公开简历</h1>
+      <p class="hero-lead">
+        10 年 Java 后端工程师。经历过大厂、裁员和外包环境，现在正在把后端工程经验往 AI 应用和独立开发上接。这页不是标准 PDF 简历，而是更适合公开查看的职业画像。
       </p>
-      <h2>Profile</h2>
-      <p>10 年 Java 后端工程师，经历过大厂、裁员、外包环境，现在正在转向 AI 应用和独立开发。</p>
-      <h2>Strengths</h2>
-      <ul>
-        <li>后端系统设计与稳定性意识</li>
-        <li>复杂问题排查与工程判断</li>
-        <li>技术写作与结构化表达</li>
-        <li>从旧系统能力向 AI 应用场景迁移</li>
-      </ul>
-      <h2>Current direction</h2>
-      <p>用写作、项目和站点本身，把“旧后端能力如何接到新产品形态”这件事一点点做实。</p>
-    </section>
+      <div style="margin-top: 3rem; display: flex; flex-wrap: wrap; gap: 3rem; font-family: var(--mono); font-size: 0.85rem; color: var(--text-dim);">
+        <div style="display: flex; gap: 0.75rem; align-items: center;">
+          <span style="color: var(--accent);">[G]</span>
+          <span>GitHub: <a href="https://github.com/alexlifexyz" target="_blank" rel="noreferrer" style="color: var(--text);">alexlifexyz</a></span>
+        </div>
+        <div style="display: flex; gap: 0.75rem; align-items: center;">
+          <span style="color: var(--accent);">[W]</span>
+          <span>Website: <a href="https://alexai.top" target="_blank" rel="noreferrer" style="color: var(--text);">alexai.top</a></span>
+        </div>
+        <div style="display: flex; gap: 0.75rem; align-items: center;">
+          <span style="color: var(--accent);">[P]</span>
+          <span>Profile: Java Backend -> AI Apps -> Indie Building</span>
+        </div>
+      </div>
+    </header>
+
+    <div style="display: grid; gap: 6rem;">
+      <section>
+        <h2 style="font-size: 1.5rem; margin-bottom: 3rem; border-bottom: 2px solid var(--text); padding-bottom: 0.75rem; border-left: none; padding-left: 0;">核心优势 / Core Strengths</h2>
+        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 4rem;">
+          {coreStrengths.map((item) => (
+            <div style="display: grid; gap: 0.5rem;">
+              <h3 style="font-size: 1.1rem; color: var(--accent);">{item.title}</h3>
+              <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.8;">{item.body}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <h2 style="font-size: 1.5rem; margin-bottom: 3rem; border-bottom: 2px solid var(--text); padding-bottom: 0.75rem; border-left: none; padding-left: 0;">工作经历 / Experience</h2>
+        <div style="display: grid; gap: 4rem;">
+          {experiencePhases.map((phase) => (
+            <div class="experience-item">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap;">
+                <h3 style="margin-bottom: 0; font-size: 1.25rem;">{phase.phase}</h3>
+                <span class="mono" style="font-size: 0.85rem; color: var(--text-dim);">{phase.period}</span>
+              </div>
+              <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                {phase.summary}
+              </p>
+              <ul style="list-style: none; padding-left: 0; display: grid; gap: 0.75rem; font-size: 0.95rem; color: var(--text-muted);">
+                {phase.bullets.map((bullet) => (
+                  <li style="display: flex; gap: 0.75rem;"><span style="color: var(--accent);">›</span>{bullet}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <h2 style="font-size: 1.5rem; margin-bottom: 3rem; border-bottom: 2px solid var(--text); padding-bottom: 0.75rem; border-left: none; padding-left: 0;">技术栈 / Tech Stack</h2>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 4rem;">
+          {techColumns.map((column) => (
+            <div>
+              <h4 style="font-family: var(--mono); font-size: 0.8rem; text-transform: uppercase; color: var(--text-dim); margin-bottom: 1.5rem;">{column.title}</h4>
+              <div style="display: flex; flex-direction: column; gap: 0.75rem; font-size: 0.95rem;">
+                {column.items.map((item) => (
+                  <span>{item}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section>
+        <h2 style="font-size: 1.5rem; margin-bottom: 3rem; border-bottom: 2px solid var(--text); padding-bottom: 0.75rem; border-left: none; padding-left: 0;">公开工作样本 / Public Proof of Work</h2>
+        <div style="display: grid; gap: 1.25rem;">
+          <p style="color: var(--text-muted); line-height: 1.8;">
+            这不是一个只堆技术关键词的公开简历。我现在会把文章、项目和个人站一起作为能力样本。它们更能说明我在怎么思考、怎么判断、以及想把自己往哪里接。
+          </p>
+          <ul style="list-style: none; padding-left: 0; display: grid; gap: 0.9rem; color: var(--text-muted);">
+            <li style="display: flex; gap: 0.75rem;"><span style="color: var(--accent);">›</span><a href="/writing" style="color: var(--text);">Writing</a>：持续写 AI 时代程序员的生存、转型和自救</li>
+            <li style="display: flex; gap: 0.75rem;"><span style="color: var(--accent);">›</span><a href="/projects/wechat-content-workspace" style="color: var(--text);">WeChat Content Workspace</a>：围绕写作、发布和复盘搭的内容工作流</li>
+            <li style="display: flex; gap: 0.75rem;"><span style="color: var(--accent);">›</span><a href="https://github.com/alexlifexyz" target="_blank" rel="noreferrer" style="color: var(--text);">GitHub</a>：持续沉淀公开代码和实验</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <div style="margin-top: 10rem; padding: 5rem; text-align: center; background: var(--surface-muted); border-radius: var(--radius-md);">
+      <h3 style="font-size: 1.5rem; margin-bottom: 1.5rem;">对 AI 应用、后端工程和独立项目合作保持开放</h3>
+      <p style="color: var(--text-muted); margin-bottom: 3rem; max-width: 500px; margin-inline: auto;">
+        如果你正在寻找一个有工程判断力、能把旧后端经验接到新产品形态上的人，这个站本身就是我当前最真实的样本。
+      </p>
+      <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+        <a class="btn btn-primary" href="https://alexai.top" target="_blank" rel="noreferrer">alexai.top</a>
+        <a class="btn btn-outline" href="https://github.com/alexlifexyz" target="_blank" rel="noreferrer">GitHub</a>
+      </div>
+    </div>
   </div>
 </BaseLayout>
