@@ -8,6 +8,10 @@ Planning docs are in place.
 
 Astro MVP skeleton is in place and verified with `npm run check` and `npm run build`.
 
+GitHub repo is live:
+
+- `https://github.com/alexlifexyz/alexlifexyz-site`
+
 ## Current Decisions In Effect
 
 - standalone repo
@@ -17,11 +21,11 @@ Astro MVP skeleton is in place and verified with `npm run check` and `npm run bu
 
 ## Next Actions
 
-1. create GitHub repo and push the initial MVP
-2. connect Cloudflare Pages
-3. replace placeholder site URL in `astro.config.mjs`
-4. import the first curated public article batch
-5. refine homepage copy and resume detail blocks
+1. connect Cloudflare Pages
+2. replace placeholder site URL in `astro.config.mjs`
+3. import the first curated public article batch
+4. refine homepage copy and resume detail blocks
+5. add a production-ready contact / social block
 
 ## Handoff Rules
 

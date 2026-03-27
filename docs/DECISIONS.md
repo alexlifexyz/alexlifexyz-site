@@ -45,3 +45,12 @@ Reason:
 - keeps the public site cleaner
 - makes future automation safer
 
+### Decision 5
+
+Remote repository:
+
+- `https://github.com/alexlifexyz/alexlifexyz-site`
+
+Reason:
+
+- standalone public repo is better for future deployment and multi-device continuation
