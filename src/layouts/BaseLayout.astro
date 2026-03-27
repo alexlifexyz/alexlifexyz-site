@@ -30,6 +30,7 @@ const navItems = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -38,7 +39,14 @@ const navItems = [
     <header class="site-header">
       <div class="page-shell site-header-inner">
         <a class="brand" href="/">
-          <span class="brand-mark">A</span>
+          <span class="brand-mark">
+            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px;">
+              <path d="M10 11L6 16L10 21" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M22 11L26 16L22 21" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M18 10L13 22" stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="18.5" cy="9.5" r="3" fill="#60a5fa"/>
+            </svg>
+          </span>
           <span class="brand-title">Alex<span class="text-dim">.xyz</span></span>
         </a>
         <nav class="site-nav" aria-label="Primary">
@@ -60,7 +68,14 @@ const navItems = [
         <div class="footer-inner">
           <div class="footer-brand">
             <a class="brand" href="/" style="margin-bottom: 1.5rem;">
-              <span class="brand-mark">A</span>
+              <span class="brand-mark">
+                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px;">
+                  <path d="M10 11L6 16L10 21" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M22 11L26 16L22 21" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M18 10L13 22" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                  <circle cx="18.5" cy="9.5" r="3" fill="#60a5fa"/>
+                </svg>
+              </span>
               <span class="brand-title">Alex<span class="text-dim">.xyz</span></span>
             </a>
             <p style="line-height: 1.8; color: var(--text-muted); max-width: 320px;">
