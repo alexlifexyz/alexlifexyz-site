@@ -16,6 +16,10 @@ Deployment is live:
 
 - `https://alexlifexyz-site.pages.dev/`
 
+Target production domain:
+
+- `https://alexai.top`
+
 Deployment preparation is in place:
 
 - `.node-version`
@@ -32,8 +36,8 @@ Deployment preparation is in place:
 
 ## Next Actions
 
-1. connect custom domain
-2. set real `SITE_URL`
+1. connect `alexai.top`
+2. set `SITE_URL=https://alexai.top`
 3. import the first curated public article batch
 4. refine homepage copy and resume detail blocks
 5. merge or manually apply the Gemini visual redesign once it is stable

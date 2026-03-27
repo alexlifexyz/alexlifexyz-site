@@ -60,11 +60,11 @@ Cloudflare Pages supports setting Node versions via `.node-version` or `NODE_VER
 
 Current fallback:
 
-- `https://alexlifexyz-site.pages.dev`
+- `https://alexai.top`
 
 After your real domain is connected, set:
 
-- `SITE_URL=https://your-domain.com`
+- `SITE_URL=https://alexai.top`
 
 Recommended place:
 
@@ -101,6 +101,11 @@ Cloudflare will build from GitHub and create:
 Then go to:
 
 - `Pages project -> Custom domains`
+
+For this project, use:
+
+- primary domain: `alexai.top`
+- optional redirect domain: `www.alexai.top`
 
 If using:
 
@@ -158,8 +163,9 @@ The following still requires Cloudflare account access:
 - `npm run build`
 - connect repo in Cloudflare Pages
 - verify `pages.dev` deployment
-- add custom domain
-- set `SITE_URL`
+- add `alexai.top`
+- optionally add `www.alexai.top`
+- set `SITE_URL=https://alexai.top`
 - redeploy once
 
 ## Useful Commands
