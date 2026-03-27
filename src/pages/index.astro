@@ -1,0 +1,102 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+const posts = (await getCollection("posts", ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+const featuredPosts = posts.filter((post) => post.data.featured).slice(0, 3);
+
+const projects = (await getCollection("projects")).slice(0, 2);
+---
+
+<BaseLayout title="Alex | Personal Site" path="/">
+  <section class="hero">
+    <div class="page-shell hero-grid">
+      <div class="panel hero-main stack">
+        <span class="eyebrow">MVP in progress</span>
+        <h1>一个做了 10 年 Java 的人，正在把自己往 AI 应用和独立开发上接。</h1>
+        <p class="lead">
+          这里不是纯博客，也不是模板化作品集。它会同时承载我的写作、项目、公开简历和正在发生的职业转向。
+        </p>
+        <div class="actions">
+          <a class="button primary" href="/writing">Read the writing</a>
+          <a class="button" href="/resume">Open resume</a>
+        </div>
+      </div>
+      <aside class="panel hero-side stack">
+        <div class="meta-list">
+          <div>
+            <strong>Current identity</strong>
+            <p>10 年 Java 后端，大厂裁员后继续在外包环境里工作，同时转向 AI 应用和独立开发。</p>
+          </div>
+          <div>
+            <strong>What this site is for</strong>
+            <p>沉淀写作，展示项目，帮助面试，也帮助我自己把方向慢慢做实。</p>
+          </div>
+          <div>
+            <strong>Current build target</strong>
+            <p>Astro + Cloudflare Pages。先把内容和身份搭稳，再慢慢加功能。</p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="page-shell">
+      <div class="section-heading">
+        <div class="stack">
+          <span class="eyebrow">Featured writing</span>
+          <h2>先看我怎么写</h2>
+        </div>
+        <a href="/writing">All writing</a>
+      </div>
+      <div class="card-grid">
+        {
+          featuredPosts.map((post) => (
+            <a class="panel post-card" href={`/writing/${post.slug}/`}>
+              <time datetime={post.data.pubDate.toISOString()}>
+                {post.data.pubDate.toLocaleDateString("zh-CN")}
+              </time>
+              <h3>{post.data.title}</h3>
+              <p class="lead">{post.data.description}</p>
+              <div class="tag-row">
+                {post.data.tags.map((tag) => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="page-shell">
+      <div class="section-heading">
+        <div class="stack">
+          <span class="eyebrow">Projects</span>
+          <h2>我正在把哪些东西做实</h2>
+        </div>
+        <a href="/projects">All projects</a>
+      </div>
+      <div class="card-grid">
+        {
+          projects.map((project) => (
+            <a class="panel project-card" href={`/projects/${project.slug}/`}>
+              <span class="meta">{project.data.year} · {project.data.status}</span>
+              <h3>{project.data.title}</h3>
+              <p class="lead">{project.data.summary}</p>
+              <div class="tag-row">
+                {project.data.stack.map((item) => (
+                  <span class="tag">{item}</span>
+                ))}
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

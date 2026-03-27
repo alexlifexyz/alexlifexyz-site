@@ -1,0 +1,64 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+  path?: string;
+}
+
+const {
+  title,
+  description = "一个 10 年 Java 后端，经历过大厂裁员，现在在转 AI 应用和独立开发。",
+  path = "/",
+} = Astro.props;
+
+const navItems = [
+  { href: "/", label: "Home" },
+  { href: "/writing", label: "Writing" },
+  { href: "/projects", label: "Projects" },
+  { href: "/about", label: "About" },
+  { href: "/resume", label: "Resume" },
+  { href: "/now", label: "Now" },
+];
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="page-shell site-header-inner">
+        <a class="brand" href="/">
+          <span class="brand-mark">A</span>
+          <span class="brand-copy">
+            <span class="brand-title">Alex / Agent 降临派</span>
+            <span class="brand-subtitle">Java backend -> AI apps -> indie building</span>
+          </span>
+        </a>
+        <nav class="site-nav" aria-label="Primary">
+          {
+            navItems.map((item) => (
+              <a href={item.href} aria-current={path === item.href ? "page" : undefined}>
+                {item.label}
+              </a>
+            ))
+          }
+        </nav>
+      </div>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="page-shell">
+        <p>Built for writing, credibility, and long-term iteration.</p>
+      </div>
+    </footer>
+  </body>
+</html>

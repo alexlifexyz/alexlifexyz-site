@@ -1,0 +1,34 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const projects = (await getCollection("projects")).sort((a, b) =>
+  Number(b.data.featured) - Number(a.data.featured),
+);
+---
+
+<BaseLayout title="Projects | Alex" path="/projects">
+  <div class="content-wrap">
+    <div class="panel content-card">
+      <span class="eyebrow">Projects</span>
+      <h1>项目</h1>
+      <p class="lead">先展示真正和我的方向有关的项目，不堆无关仓库。</p>
+    </div>
+    <div class="section card-list">
+      {
+        projects.map((project) => (
+          <a class="panel project-card" href={`/projects/${project.slug}/`}>
+            <span class="meta">{project.data.year} · {project.data.status}</span>
+            <h2>{project.data.title}</h2>
+            <p class="lead">{project.data.summary}</p>
+            <div class="tag-row">
+              {project.data.stack.map((item) => (
+                <span class="tag">{item}</span>
+              ))}
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</BaseLayout>
