@@ -7,7 +7,7 @@ Append-only, but keep it light.
 - machine: `MacBook-Pro.local`
 - tool / model: `Codex / GPT-5`
 - branch: `main`
-- cwd: `~/studio/30-products/active/alexlifexyz-site`
+- cwd: `~/studio/30-products/alexlifexyz-site`
 - objective: add a local `.ai/` memory layer without breaking the repo's existing docs workflow
 - what changed:
   - added `.ai/project-context.md`

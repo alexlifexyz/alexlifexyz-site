@@ -224,7 +224,7 @@
 
 ## 当前仓库位置
 
-- 本地仓库：`/Users/mac/studio/20-content/wechat/code/alexlifexyz-site`
+- 本地仓库：`/Users/mac/studio/30-products/alexlifexyz-site`
 
 优先阅读：
 

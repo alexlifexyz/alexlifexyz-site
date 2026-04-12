@@ -16,7 +16,7 @@ Reason:
 
 Local repo path:
 
-- `/Users/mac/studio/20-content/wechat/code/alexlifexyz-site`
+- `/Users/mac/studio/30-products/alexlifexyz-site`
 
 Reason:
 

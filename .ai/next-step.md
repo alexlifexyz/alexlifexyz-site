@@ -21,5 +21,5 @@
 ## Resume Command
 
 ```bash
-cd ~/studio/30-products/active/alexlifexyz-site && git status && rg --files .ai docs src | head -n 80
+cd ~/studio/30-products/alexlifexyz-site && git status && rg --files .ai docs src | head -n 80
 ```

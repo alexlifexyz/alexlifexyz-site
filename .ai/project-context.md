@@ -29,7 +29,7 @@
 
 ## Repo Info
 
-- local path: `~/studio/30-products/active/alexlifexyz-site`
+- local path: `~/studio/30-products/alexlifexyz-site`
 - remote: `https://github.com/alexlifexyz/alexlifexyz-site`
 - default branch: `main`
 - current branch: `main`
