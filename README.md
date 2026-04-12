@@ -1,27 +1,19 @@
-# Alex Personal Site
+# alexlifexyz-site
 
-This repo is the codebase for Alex's personal website.
+这是 Alex 的个人网站代码仓库。
 
-It is not just a blog.
+目标不是单纯博客，而是同时承担：
 
-It should serve four jobs at the same time:
+- 写作归档
+- 个人品牌主页
+- 面试可用的简历展示
+- 项目案例展示
 
-- public writing archive
-- personal brand site
-- interview-friendly resume site
-- project showcase
-
-Current positioning:
+当前定位：
 
 `一个 10 年 Java 后端，经历过大厂裁员，现在在转 AI 应用和独立开发。`
 
-Current target stack:
-
-- `Astro`
-- `Cloudflare Pages`
-- Markdown-driven content
-
-Read these first in any new session:
+## 新会话启动顺序
 
 1. `AGENTS.md`
 2. `docs/PROJECT-BRIEF.md`
@@ -32,18 +24,18 @@ Read these first in any new session:
 7. `docs/DEVELOPMENT-WORKFLOW.md`
 8. `docs/LOCAL-SETUP.md`
 
-## Repo Layout
+## 目录说明
 
-- `src/pages/`: site pages
-- `src/content/posts/`: public articles
-- `src/content/projects/`: public project entries
-- `docs/`: planning, rules, handoff, roadmap
-- `public/`: static assets
+- `src/pages/`：页面
+- `src/content/posts/`：文章
+- `src/content/projects/`：项目条目
+- `docs/`：规划与决策文档
+- `public/`：静态资源
 
-## Current Phase
+## 当前阶段
 
-Phase `0`:
+阶段 `0`：
 
-- finalize information architecture
-- build the MVP skeleton
-- publish first version under custom domain
+- 完成信息架构收敛
+- 搭建 MVP 骨架
+- 发布第一版站点
