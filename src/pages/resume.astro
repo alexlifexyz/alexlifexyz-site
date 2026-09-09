@@ -3,106 +3,100 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 
 const coreStrengths = [
   {
-    title: "高可用分布式后端底座",
+    title: "Java 后端与平台底座",
     body:
-      "10 年 Java 生态深耕，长期负责高并发分布式系统的架构设计、核心链路治理与容量压测。精通系统高可用设计、JVM 深度调优与复杂线上故障定位，保障业务在千万级高负载下的绝对稳定运行。",
+      "11 年 Java。在平安做过集团统一认证，在联想做过研发自动化平台，在国网做微服务脚手架和公共组件。习惯处理权限、稳定性、跨系统对接和线上问题，而不是只写业务 CRUD。",
   },
   {
-    title: "企业级 AI / RAG 工程化落地",
+    title: "可演示的 Java RAG",
     body:
-      "深度结合 Java 21 与 LangChain4j，构建私有知识库混合检索（BM25 + 向量检索）、动态加权重排与高置信度防幻觉拒答机制。具备大模型多租户流式交互（SSE）、上下文持久化与云上极低成本交付实战经验。",
-  },
-  {
-    title: "端到端全栈产品闭环能力",
-    body:
-      "具备从需求洞察、架构设计、前端 SPA（Vue 3 / TypeScript）、后端服务到 Docker 容器化编排、Cloudflare 零信任边缘穿透的完整交付实力。能够独立主导产品从 0 到 1 稳健投产并稳定运维。",
-  },
-  {
-    title: "工程判断力与系统化技术沉淀",
-    body:
-      "历经大厂严苛工程锤炼，始终坚持‘系统确定性高于概念炫技’。善于将前沿 AI 能力解构为可维护、可度量、高 SLA 的工程现实，并具备清晰的技术写作与跨业务协同推动力。",
+      "公开项目 Java RAG Lab：文档解析、BM25 + 向量混合检索、回答带引用、证据不足拒答。Java 21 / Spring Boot 3，仓库和 rag.alexai.top 都可以点。用来说明我会把检索做成工程，而不是调一个 Chat API。",
   },
 ];
 
 const experiencePhases = [
   {
-    phase: "企业级 AI 架构与私有知识库系统落地",
-    period: "2025 - 至今 · 架构设计 / 研发负责人",
+    phase: "国网信通 · 后端开发工程师",
+    period: "2024.10 - 至今 · 成都",
     summary:
-      "主导全栈 AI 助手与企业私有知识库系统的设计、工程化重构与生产级交付。以 Java 21 高版本语言特性与现代模型框架为基底，攻克企业知识召回精度、防幻觉溯源与低成本运行三大核心难题。",
+      "参与集团微服务框架底座和公共组件，给业务项目组做接入和问题排查。",
     bullets: [
-      "架构并研发 Java RAG Lab 检索系统：融合 BM25 精确关键词检索与向量语义召回（Hybrid Retrieval），配合加权融合算法，彻底解决企业制度、专业规章与特定名词的难以召回痛点",
-      "设计动态置信度安全防御与段落级溯源机制（Citations）：在检索证据不足时主动安全拒答，并在生成回答中精准标注来源引用片段，彻底消除企业级应用中的大模型幻觉隐患",
-      "打造 AI Assistant Suite 智能助手全栈体系：采用 Spring Boot 3 + LangChain4j 作为后端引擎，配合响应式 Vue 3 客户端与浏览器扩展，支持实时打字机流式（SSE）长文本对话与多轮记忆持久化",
-      "构建云原生零信任低成本运维架构：基于 GCP Spot 抢占式实例、Docker 容器编排与 Cloudflare Tunnel，在确保内网隔离零端口暴露的前提下，实现 $0 成本全球 HTTPS 高可用接入",
+      "参与网关、定时任务、元数据校验、审计日志、权限等脚手架能力",
+      "维护审计日志、加解密、ID 生成、文件上传下载等公共组件",
+      "为项目组提供接入指导和线上问题定位",
     ],
   },
   {
-    phase: "分布式高并发架构演进与核心后端研发",
-    period: "2018 - 2024 · 资深后端工程师 / 技术核心",
+    phase: "联想集团 · 资深开发工程师",
+    period: "2021.09 - 2024.04",
     summary:
-      "在大厂及核心业务线担任后端研发主力，长期负责分布式核心系统的架构演进、性能攻坚与线上稳定性保障，经历多轮高并发峰值洗礼与架构升级。",
+      "智能运维自动化平台，服务 15000+ 研发人员的远程访问、自动化执行和场景编排。",
     bullets: [
-      "主导核心业务链路的解耦与重构：推行微服务化治理与领域驱动设计（DDD），梳理核心域模型，制定标准化对外 API 契约与异常防护规范",
-      "负责生产级性能攻坚与 JVM 深度调优：针对 GC 停顿过长、高并发线程阻塞、内存泄漏等线上棘手问题实施深度排查并定位根因，大幅提升核心服务吞吐量",
-      "设计高可用数据与缓存分层体系：基于 MySQL / openGauss、Redis 缓存与 MQ 消息队列构建削峰填谷链路，设计精细的防击穿、防雪崩与分布式锁策略",
-      "建设系统级稳定性保障工程：完善全链路调用链追踪、核心接口监控指标、限流熔断与降级预案，持续保障核心业务 99.99% 高可用 SLA",
+      "参与核心模块，优化自动化执行链路，相关场景执行效率约提升 20%",
+      "基于 Guacamole 做远程桌面访问和文件传输",
+      "参与场景脚本、上下游对接和交付支持",
     ],
   },
   {
-    phase: "后端基础研发与系统工程体系打磨",
-    period: "2014 - 2018 · Java 后端工程师",
+    phase: "平安科技 · 高级开发工程师",
+    period: "2018.05 - 2021.08",
     summary:
-      "深度参与企业级系统从单体架构到服务化演进的完整生命周期，扎实锤炼了数据结构、并发编程、数据库设计与规范化工程操守。",
+      "集团统一认证平台，以及香港政府 eID 项目后台模块。",
     bullets: [
-      "负责核心业务模块的设计、编码与联调，输出高质量、高复用、高测试覆盖率的代码实现",
-      "参与数据库 Schema 规范化设计、慢 SQL 诊断与复杂索引优化，保障千万级数据表平稳支撑业务增长",
-      "推动自动化单元测试与集成测试落地，规范团队 Code Review 机制与持续集成（CI）流水线",
+      "统一认证覆盖 2000+ 子系统，支持约 30 万内勤与 100 万+ 业务人员接入",
+      "架构优化后核心认证链路 QPS 做到约 20 万",
+      "参与香港 eID 后台：授权认证、数据加密、文档生成",
+    ],
+  },
+  {
+    phase: "顺丰科技 · 开发工程师",
+    period: "2017.03 - 2018.04",
+    summary: "销售支持平台核心模块，面向约 30 万销售用户。",
+    bullets: [
+      "参与销售过程管理和内部系统对接",
+      "商机数据量和慢 SQL 优化，提升处理效率",
     ],
   },
 ];
 
 const techColumns = [
   {
-    title: "Backend Core",
+    title: "Backend",
     items: [
-      "Java 17 / 21, Spring Boot 3, Spring Cloud",
-      "MySQL, openGauss, PostgreSQL, JPA / MyBatis",
-      "Redis (缓存设计/分布式锁), Kafka / RocketMQ",
-      "JVM 性能调优, 分布式高可用, 并发编程",
+      "Java 17 / 21, Spring Boot, Spring Cloud",
+      "MySQL, Redis, RabbitMQ",
+      "MyBatis / JOOQ, 并发与 JVM 调优",
     ],
   },
   {
-    title: "AI & RAG Engineering",
+    title: "AI / RAG（公开可验证）",
     items: [
-      "LangChain4j, OpenAI/DeepSeek API 兼容规范",
-      "RAG (BM25 + 向量检索混合召回, 加权重排)",
-      "向量存储 (Chroma, InMemory), 嵌入模型",
-      "防幻觉置信度控制, Citations 证据溯源, Agent 编排",
+      "混合检索：BM25 + 向量召回",
+      "引用（chunk 级）与证据不足拒答",
+      "LLM / Embedding 可替换客户端；演示可用内存向量",
     ],
   },
   {
-    title: "Fullstack & Cloud Native",
+    title: "Delivery",
     items: [
-      "Vue 3, TypeScript, Astro 5, Nginx",
-      "Docker, Docker Compose, 容器网络与持久化",
-      "Cloudflare Zero Trust (Tunnel), Cloudflare Pages",
-      "GCP / Linux 系统运维, GitHub Actions CI/CD",
+      "Docker, Linux, Git, Maven",
+      "Cloudflare Tunnel / Pages",
+      "Vue 3, TypeScript, Astro（本站）",
     ],
   },
 ];
 ---
 
-<BaseLayout title="Resume | Alex" path="/resume">
+<BaseLayout title="履历 | 何占伟" path="/resume">
   <div class="content-wrap" style="padding: 8rem 0 12rem;">
     <header style="margin-bottom: 6rem;">
-      <span class="section-label mono">Engineering Profile & Resume</span>
-      <h1 style="font-size: 3.5rem; letter-spacing: -0.05em; margin-bottom: 2rem;">技术简历</h1>
+      <span class="section-label mono">Resume</span>
+      <h1 style="font-size: 3.5rem; letter-spacing: -0.05em; margin-bottom: 2rem;">何占伟</h1>
       <p class="hero-lead">
-        <strong>10 年 Java 分布式架构底座 × 企业级 AI / RAG 工程落地专家。</strong><br/>
-        长期深耕高可用后端链路与复杂系统稳定性，并深度落地私有知识库混合检索与大模型全栈系统。追求系统确定性与业务交付价值。
+        <strong>Java 后端 / Java + AI 应用落地。</strong> 成都。11 年。<br/>
+        西南科技大学 · 计算机科学与技术 · 本科。公开证据：<a href="https://rag.alexai.top">rag.alexai.top</a>
       </p>
-      
+
       <div style="margin-top: 3rem; display: flex; flex-wrap: wrap; gap: 2.5rem; font-family: var(--mono); font-size: 0.85rem; color: var(--text-dim); background: var(--surface-muted); padding: 1.5rem 2rem; border-radius: var(--radius-sm); border: 1px solid var(--line);">
         <div style="display: flex; gap: 0.75rem; align-items: center;">
           <span style="color: var(--accent); font-weight: 600;">[Email]</span>
@@ -113,19 +107,19 @@ const techColumns = [
           <span><a href="https://github.com/alexlifexyz" target="_blank" rel="noreferrer" style="color: var(--text); font-weight: 500;">github.com/alexlifexyz</a></span>
         </div>
         <div style="display: flex; gap: 0.75rem; align-items: center;">
-          <span style="color: var(--accent); font-weight: 600;">[Website]</span>
-          <span><a href="https://alexai.top" target="_blank" rel="noreferrer" style="color: var(--text); font-weight: 500;">alexai.top</a></span>
+          <span style="color: var(--accent); font-weight: 600;">[Location]</span>
+          <span style="color: var(--text);">成都</span>
         </div>
         <div style="display: flex; gap: 0.75rem; align-items: center;">
           <span style="color: var(--accent); font-weight: 600;">[Status]</span>
-          <span style="color: var(--text);">资深后端架构 / AI 架构方向 开放交流</span>
+          <span style="color: var(--text);">开放 Java / Java+AI 沟通</span>
         </div>
       </div>
     </header>
 
     <div style="display: grid; gap: 6rem;">
       <section>
-        <h2 style="font-size: 1.5rem; margin-bottom: 3rem; border-bottom: 2px solid var(--text); padding-bottom: 0.75rem; border-left: none; padding-left: 0;">核心专业优势 / Core Competencies</h2>
+        <h2 style="font-size: 1.5rem; margin-bottom: 3rem; border-bottom: 2px solid var(--text); padding-bottom: 0.75rem; border-left: none; padding-left: 0;">能核对的两件事</h2>
         <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 4rem;">
           {coreStrengths.map((item) => (
             <div style="display: grid; gap: 0.5rem;">
@@ -137,7 +131,7 @@ const techColumns = [
       </section>
 
       <section>
-        <h2 style="font-size: 1.5rem; margin-bottom: 3rem; border-bottom: 2px solid var(--text); padding-bottom: 0.75rem; border-left: none; padding-left: 0;">专业经历与工程产出 / Professional Experience</h2>
+        <h2 style="font-size: 1.5rem; margin-bottom: 3rem; border-bottom: 2px solid var(--text); padding-bottom: 0.75rem; border-left: none; padding-left: 0;">任职经历</h2>
         <div style="display: grid; gap: 4rem;">
           {experiencePhases.map((phase) => (
             <div class="experience-item">
@@ -162,7 +156,7 @@ const techColumns = [
       </section>
 
       <section>
-        <h2 style="font-size: 1.5rem; margin-bottom: 3rem; border-bottom: 2px solid var(--text); padding-bottom: 0.75rem; border-left: none; padding-left: 0;">专业技能矩阵 / Technical Matrix</h2>
+        <h2 style="font-size: 1.5rem; margin-bottom: 3rem; border-bottom: 2px solid var(--text); padding-bottom: 0.75rem; border-left: none; padding-left: 0;">技能</h2>
         <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 4rem;">
           {techColumns.map((column) => (
             <div>
@@ -178,39 +172,39 @@ const techColumns = [
       </section>
 
       <section>
-        <h2 style="font-size: 1.5rem; margin-bottom: 3rem; border-bottom: 2px solid var(--text); padding-bottom: 0.75rem; border-left: none; padding-left: 0;">代表性项目与可验证成果 / Proof of Work (Live)</h2>
+        <h2 style="font-size: 1.5rem; margin-bottom: 3rem; border-bottom: 2px solid var(--text); padding-bottom: 0.75rem; border-left: none; padding-left: 0;">公开可点</h2>
         <div style="display: grid; gap: 1.5rem;">
           <p style="color: var(--text-muted); line-height: 1.8; font-size: 1rem;">
-            以下均为真实部署在线、可直接交互体验的生产级工程项目，支持在线验证与代码审阅：
+            下面两个都能打开。求职主证据是 Java RAG Lab。
           </p>
           <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 1rem;">
             <div class="panel" style="padding: 2rem;">
               <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
-                <span class="mono" style="font-size: 0.75rem; color: var(--accent); font-weight: 600;">LIVE SYSTEM</span>
+                <span class="mono" style="font-size: 0.75rem; color: var(--accent); font-weight: 600;">PRIMARY</span>
                 <span class="mono" style="font-size: 0.75rem; color: var(--text-dim);">Java 21 · RAG</span>
               </div>
               <h3 style="font-size: 1.25rem; margin-bottom: 0.75rem;">Java RAG Lab</h3>
               <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.5rem;">
-                企业级混合检索知识库系统。攻克多格式文档解析、BM25 + 向量加权召回、精准溯源与拒答机制。
+                文档问答。混合检索、引用、拒答。独立完成，2026。
               </p>
-              <div style="display: flex; gap: 1rem;">
-                <a class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;" href="https://rag.alexai.top" target="_blank" rel="noreferrer">在线体验 Demo ›</a>
-                <a class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.85rem;" href="/projects/java-rag-lab/">项目详情</a>
+              <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;" href="https://rag.alexai.top" target="_blank" rel="noreferrer">打开 Demo</a>
+                <a class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.85rem;" href="/projects/java-rag-lab/">说明</a>
               </div>
             </div>
 
             <div class="panel" style="padding: 2rem;">
               <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
-                <span class="mono" style="font-size: 0.75rem; color: var(--accent); font-weight: 600;">LIVE SYSTEM</span>
-                <span class="mono" style="font-size: 0.75rem; color: var(--text-dim);">Spring Boot 3 · Vue 3</span>
+                <span class="mono" style="font-size: 0.75rem; color: var(--text-dim); font-weight: 600;">ALSO LIVE</span>
+                <span class="mono" style="font-size: 0.75rem; color: var(--text-dim);">Spring Boot · Vue 3</span>
               </div>
               <h3 style="font-size: 1.25rem; margin-bottom: 0.75rem;">AI Assistant Suite</h3>
               <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.5rem;">
-                全栈智能助手解决方案。支持 SSE 流式打字机响应、对话状态持久化、浏览器扩展与多模型热切换。
+                SSE 对话助手，用来练编排和流式接口，不是主证据。
               </p>
-              <div style="display: flex; gap: 1rem;">
-                <a class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;" href="https://chat.alexai.top" target="_blank" rel="noreferrer">在线体验 Demo ›</a>
-                <a class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.85rem;" href="/projects/ai-assistant-suite/">项目详情</a>
+              <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <a class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.85rem;" href="https://chat.alexai.top" target="_blank" rel="noreferrer">打开 Demo</a>
+                <a class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.85rem;" href="/projects/ai-assistant-suite/">说明</a>
               </div>
             </div>
           </div>
@@ -219,13 +213,13 @@ const techColumns = [
     </div>
 
     <div class="rack" style="margin-top: 8rem; padding: 3rem; text-align: center;">
-      <h3 style="font-size: 1.6rem; margin-bottom: 1rem;">欢迎交流与机会探讨</h3>
+      <h3 style="font-size: 1.6rem; margin-bottom: 1rem;">沟通</h3>
       <p style="color: var(--text-muted); margin-bottom: 2.5rem; max-width: 580px; margin-inline: auto; line-height: 1.8;">
-        对分布式后端架构设计、企业级 AI / RAG 系统落地、技术团队核心骨干角色保持开放沟通。<br/>期待与务实、有远见的团队共同打造高价值技术系统。
+        成都。Java 后端或 Java + AI 应用落地都可以聊。
       </p>
       <div style="display: flex; justify-content: center; gap: 1.25rem; flex-wrap: wrap;">
-        <a class="btn btn-primary" href="mailto:Alexlifexyz@gmail.com">发送邮件与我联系</a>
-        <a class="btn btn-outline" href="https://github.com/alexlifexyz" target="_blank" rel="noreferrer">查看 GitHub 仓库</a>
+        <a class="btn btn-primary" href="mailto:Alexlifexyz@gmail.com">邮件</a>
+        <a class="btn btn-outline" href="https://github.com/alexlifexyz" target="_blank" rel="noreferrer">GitHub</a>
       </div>
     </div>
   </div>

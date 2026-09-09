@@ -2,53 +2,38 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="About | Alex" path="/about">
+<BaseLayout title="关于何占伟 | Alex" path="/about">
   <div class="content-wrap" style="padding: 8rem 0 10rem;">
     <article>
       <header style="margin-bottom: 5rem;">
-        <span class="section-label mono">Identity / Background</span>
+        <span class="section-label mono">Identity</span>
         <h1 style="font-size: 3.5rem; letter-spacing: -0.05em; margin-bottom: 2rem;">关于我</h1>
         <p class="hero-lead">
-          10 年分布式后端架构沉淀，专注企业级 AI / RAG 工程化落地与高确定性系统交付。
+          何占伟 / Alex。成都。11 年 Java 后端，正在把 RAG 做成能给别人点开的工程。
         </p>
       </header>
-      
+
       <div class="prose">
         <p>
-          我是 Alex。过去 10 年，我深耕于 Java 高并发分布式系统、微服务架构治理与云原生基础设施建设，主导并参与过多条支撑数千万级用户规模的生产系统演进。
+          我在联想、平安、顺丰做过认证、自动化平台和业务系统，后面在国网信通做集团微服务底座和公共组件。长期处理的是权限、稳定性、跨系统对接这类具体问题，不是 Demo。
         </p>
         <p>
-          在大模型技术重塑软件工程的浪潮下，我没有停留在消费级 AI 的浮躁热度中，而是以扎实的工程纪律切入企业级 AI 落地场景：通过解决<strong>知识库混合检索准确率</strong>、<strong>动态重排防幻觉</strong>、<strong>高并发流式底座吞吐</strong>与<strong>私有化数据安全</strong>等关键工程命题，帮助团队构建真正具备商业价值与生产稳定性的智能系统。
+          大模型热起来之后，我没有把主线改成调 API。公开项目 <a href="https://rag.alexai.top">Java RAG Lab</a> 要证明的很窄：文档进来，切块、检索、作答；证据够就带引用，不够就拒答。Java 21 / Spring Boot 3，仓库和演示都在线上。
         </p>
-        
-        <h2>工程信条与核心原则</h2>
-        <ul>
-          <li><strong>工程确定性高于概念热度：</strong>大模型应用绝不仅是 Prompt 工程或简单调用 API。在生产环境中，数据清洗治理、分块切分策略、向量与全文混合检索（Hybrid Search）、重排序（Reranking）以及置信度防御拦截，才是系统可用性的基石。</li>
-          <li><strong>端到端全链路交付能力：</strong>从基于 Java 21 / Spring Boot 3 的高吞吐服务端内核，到 pgvector / Milvus 向量库调优，再到 Vue 3 / Next.js 全栈交互与 Cloudflare 边缘安全防护，具备单兵或带领团队完成架构闭环的综合实力。</li>
-          <li><strong>深谙企业级痛点与架构平衡：</strong>具备深厚的历史系统演进经验，善于在现有微服务体系与全新 AI 工作流之间找到低风险、高 ROI 的融合路径，拒绝盲目重构，追求可度量、可观测与持续演进。</li>
-        </ul>
-
-        <h2>技术矩阵概览</h2>
         <p>
-          <strong>后端与高并发：</strong>Java 21, Spring Boot 3, Spring Cloud, Dubbo, Netty, Redis, Kafka, MySQL, PostgreSQL<br/>
-          <strong>企业级 AI & RAG：</strong>Spring AI, LangChain4j, BM25 + Vector 混合检索, RRF 融合重排, DeepSeek / Claude API, Prompt 防御<br/>
-          <strong>基础设施与全栈：</strong>Docker, Kubernetes, GCP, Cloudflare Zero Trust / Tunnel, Vue 3, TypeScript, Linux 生产调优
-        </p>
-
-        <p style="margin-top: 4rem; color: var(--text-dim); font-style: italic;">
-          // 真正的技术壁垒，来自复杂工程边界下的稳定交付与兜底能力。
+          现在人在成都，对 Java 后端和 Java + AI 应用落地方向保持开放。履历、项目和写作都在这个站点。
         </p>
       </div>
 
       <div class="rack" style="margin-top: 6rem; padding: 2.25rem; display: flex; justify-content: space-between; align-items: center; gap: 1.5rem; flex-wrap: wrap;">
         <div>
-          <h3 style="margin-bottom: 0.5rem;">技术交流与商务合作</h3>
-          <p style="color: var(--text-muted); font-size: 0.95rem;">随时欢迎探讨企业级 AI 落地、分布式系统治理或高级岗位机会。</p>
+          <h3 style="margin-bottom: 0.5rem;">沟通</h3>
+          <p style="color: var(--text-muted); font-size: 0.95rem;">岗位、协作或想看 RAG Lab 怎么跑，直接邮件。</p>
         </div>
-        <div style="display: flex; gap: 1rem;">
-          <a href="/resume" class="btn btn-primary">查看在线简历</a>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="/resume" class="btn btn-primary">查看履历</a>
           <a href="mailto:Alexlifexyz@gmail.com" class="btn btn-outline">发送邮件</a>
-          <a href="https://github.com/alexlifexyz" target="_blank" class="btn btn-outline">GitHub</a>
+          <a href="https://github.com/alexlifexyz" target="_blank" rel="noopener noreferrer" class="btn btn-outline">GitHub</a>
         </div>
       </div>
     </article>

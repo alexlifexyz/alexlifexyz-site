@@ -2,35 +2,32 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="Now | Alex" path="/now">
+<BaseLayout title="Now | 何占伟" path="/now">
   <div class="content-wrap" style="padding: 8rem 0 10rem;">
     <article>
       <header style="margin-bottom: 6rem;">
         <span class="section-label mono">Current Focus</span>
         <h1 style="font-size: 3.5rem; letter-spacing: -0.05em; margin-bottom: 2rem;">正在做什么</h1>
         <p class="hero-lead">
-          这是我目前最关注的事项，也是我在这段时间里投入大部分精力的地方。最后更新于 2026.09。
+          这页只记当前在跟的事。最后更新于 2026.09。
         </p>
       </header>
-      
+
       <div class="prose">
         <ul style="display: grid; gap: 2rem;">
           <li>
-            <strong>工程落地：</strong>落地企业级 RAG 与 Agent 架构（如刚上线的 Java 21 RAG Lab），重点探索 BM25 + 向量混合检索、抗幻觉精准溯源与高并发后端体系。
+            <strong>公开证据：</strong>Java RAG Lab 已经能演示解析、混合检索、带引用回答和拒答。接下来是把它讲清楚、投出去，而不是再加一层框架。
           </li>
           <li>
-            <strong>矩阵闭环：</strong>把 AI Assistant Suite、Java RAG Lab 与个人主站打造成全链路闭环，践行一人公司的产品研发与云原生交付。
+            <strong>求职：</strong>人在成都，方向是 Java 后端 / Java + AI 应用落地。材料以本站履历和 rag.alexai.top 为准。
           </li>
           <li>
-            <strong>个人站迭代：</strong>正如你现在看到的，我在持续通过 AI 辅助工具重构这个站点。这本身也是我对“新时代研发流”的一次深度实验。
-          </li>
-          <li>
-            <strong>职业观察：</strong>在日常的工作和交流中，持续记录并思考传统后端能力在 AI 时代的各种变体和生存空间。
+            <strong>这个站：</strong>在把视觉和口径收成同一套：真名、可点的项目、能核对的经历。
           </li>
         </ul>
-        
+
         <p style="margin-top: 6rem; padding: 2rem; border-left: 2px solid var(--accent); background: var(--accent-soft); font-size: 1rem; color: var(--text-muted);">
-          Inspired by Derek Sivers' <a href="https://nownownow.com/about" target="_blank" style="font-weight: 600;">/now page</a> movement.
+          Inspired by Derek Sivers' <a href="https://nownownow.com/about" target="_blank" rel="noopener noreferrer" style="font-weight: 600;">/now page</a> movement.
         </p>
       </div>
     </article>

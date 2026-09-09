@@ -30,14 +30,14 @@ const ticks = Array.from({ length: 14 }, (_, i) => i);
   <div class="rack-viz" aria-hidden="true">
     {
       variant === "rag" ? (
-        <svg class="rack-svg" viewBox="0 0 360 72" fill="none">
-          <path class="flow" d="M8 20 H90 C120 20 120 36 150 36 H210" />
-          <path class="flow delay" d="M8 52 H90 C120 52 120 36 150 36 H210" />
-          <circle cx="210" cy="36" r="5" fill="var(--signal)" />
-          <path d="M216 36 H270" class="flow" />
-          <path d="M216 36 C240 36 250 56 280 56" class="flow warn" />
-          <text x="286" y="24" fill="var(--signal)">CITE</text>
-          <text x="286" y="60" fill="var(--warn)">REFUSE</text>
+        <svg class="rack-svg" viewBox="0 0 380 72" fill="none">
+          <path class="flow" d="M8 18 H90 C120 18 120 36 150 36 H198" />
+          <path class="flow delay" d="M8 54 H90 C120 54 120 36 150 36 H198" />
+          <circle cx="200" cy="36" r="5" fill="var(--signal)" />
+          <path class="flow" d="M206 36 C236 36 248 18 278 18 H312" />
+          <path class="flow warn" d="M206 36 C236 36 248 54 278 54 H312" />
+          <text x="318" y="22" fill="var(--signal)">CITE</text>
+          <text x="318" y="58" fill="var(--warn)">REFUSE</text>
         </svg>
       ) : (
         <div class="sse">

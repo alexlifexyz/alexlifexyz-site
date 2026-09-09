@@ -1,12 +1,12 @@
 ---
 title: "AI Assistant Suite"
-summary: "一个专业的全栈 AI 助手解决方案，结合了本地/云端 LLM 能力，提供浏览器侧边栏助手、RAG 知识库增强和智能网页交互功能。"
+summary: "Spring Boot 3 + Vue 3 的对话助手：SSE 流式输出、会话记忆。可在 chat.alexai.top 试用。"
 status: live
 stack:
   - Spring Boot
   - Vue 3
   - LangChain4j
-  - RAG
+  - SSE
 year: "2026"
 featured: true
 links:
@@ -14,20 +14,12 @@ links:
   repo: "https://github.com/alexlifexyz/ai-assistant-suite"
 ---
 
-这是我将 10 年高可用 Java 架构与前沿 LLM 工程编排深度融合的代表项目之一。
+一套能跑起来的对话助手，用来练 LLM 编排和流式接口，不是当前求职主证据。主证据是 [Java RAG Lab](/projects/java-rag-lab/)。
 
-它不仅是一个简单的聊天界面，而是一套完整的企业级 AI 增强方案。
+里面有：
 
-核心组件包括：
+- Spring Boot 3 + LangChain4j 后端，SSE 打字机输出
+- Vue 3 页面，会话可持久化
+- 可选的浏览器扩展实验（侧边栏 / 划词）
 
-- **后端服务**: 基于 Spring Boot 3.2 和 LangChain4j，提供 RAG 引擎和 SSE 流式对话。
-- **Web 前端**: 响应式的 Vue 3 客户端，支持对话历史持久化。
-- **浏览器扩展**: MV3 架构，实现侧边栏聊天和划词翻译等深度网页集成。
-
-我通过这个项目验证了：
-
-- 传统后端开发者如何快速上手 LLM 编排。
-- 如何在生产环境中处理 AI 响应的持久化与上下文管理。
-- 如何通过 RAG 提升 AI 在私有知识库场景下的准确度。
-
-你可以访问 [chat.alexai.top](https://chat.alexai.top) 直接体验。
+试用：[chat.alexai.top](https://chat.alexai.top)。
