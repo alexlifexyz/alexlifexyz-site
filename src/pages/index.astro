@@ -6,7 +6,9 @@ const posts = (await getCollection("posts", ({ data }) => !data.draft))
   .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 const featuredPosts = posts.slice(0, 3);
 
-const projects = (await getCollection("projects")).slice(0, 3);
+const projects = (await getCollection("projects"))
+  .sort((a, b) => (b.data.featured ? 1 : 0) - (a.data.featured ? 1 : 0))
+  .slice(0, 3);
 ---
 
 <BaseLayout title="Alex.xyz" path="/">
@@ -43,7 +45,7 @@ const projects = (await getCollection("projects")).slice(0, 3);
           <span class="dash-key">transitioning_to</span>: <span class="dash-val">"AI App & Indie Hacking"</span>,
         </div>
         <div class="dash-line" style="padding-left: 1.5rem;">
-          <span class="dash-key">building</span>: [<span class="dash-val">"AI Assistant Suite"</span>, <span class="dash-val">"Alex.xyz"</span>],
+          <span class="dash-key">building</span>: [<span class="dash-val">"AI Assistant Suite"</span>, <span class="dash-val">"Java RAG Lab"</span>, <span class="dash-val">"Alex.xyz"</span>],
         </div>
         <div class="dash-line" style="padding-left: 1.5rem;">
           <span class="dash-key">status</span>: <span class="dash-val">"Open for Collaboration"</span>
@@ -138,11 +140,11 @@ const projects = (await getCollection("projects")).slice(0, 3);
           <span class="section-label mono">Now</span>
           <h2>正在关注</h2>
           <p style="margin-top: 1.5rem; font-size: 1.1rem; color: var(--text-muted); line-height: 1.8;">
-            正在外包环境里沉淀 AI 应用的落地方案，同时在构建这套个人内容 Hub。我更看重技术在真实业务场景下的生命力，而不是纯粹的炫技。
+            深耕企业级 RAG、Agent 编排与大模型工程化落地，同时构建个人技术矩阵。比起概念炒作，我更看重复杂工程边界下的防幻觉、低成本与真实业务交付力。
           </p>
           <div style="margin-top: 2.5rem; display: flex; gap: 1.5rem; align-items: center;">
             <a class="btn btn-outline" href="/now">详细状态</a>
-            <span class="mono" style="font-size: 0.8rem; color: var(--text-dim);">Last updated: 2026.03.27</span>
+            <span class="mono" style="font-size: 0.8rem; color: var(--text-dim);">Last updated: 2026.09</span>
           </div>
         </div>
         <div class="panel" style="padding: 2.5rem; border-style: dashed; background: var(--surface);">
@@ -150,13 +152,13 @@ const projects = (await getCollection("projects")).slice(0, 3);
             <div style="color: var(--accent); font-weight: 600; margin-bottom: 1rem;">// Modern Stack Exploration</div>
             <div style="display: grid; grid-template-columns: 80px 1fr; gap: 0.5rem;">
               <span style="color: var(--text-dim);">[LLM]</span>
-              <span>Claude 3.5 / GPT-4o</span>
+              <span>DeepSeek V4 / Claude 3.7</span>
               <span style="color: var(--text-dim);">[ARCH]</span>
-              <span>RAG / Multi-Agent</span>
+              <span>Hybrid RAG / Multi-Agent</span>
               <span style="color: var(--text-dim);">[LANG]</span>
-              <span>Java / Python / TS</span>
+              <span>Java 21 / TypeScript / Python</span>
               <span style="color: var(--text-dim);">[INFRA]</span>
-              <span>CF Workers / Supabase</span>
+              <span>GCP Spot / Cloudflare Zero Trust</span>
             </div>
           </div>
         </div>
