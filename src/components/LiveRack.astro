@@ -1,0 +1,65 @@
+---
+interface Props {
+  variant: "rag" | "chat";
+  title: string;
+  serviceId: string;
+  summary: string;
+  kicker: string;
+  href: string;
+  detailHref?: string;
+  stack: string[];
+}
+
+const { variant, title, serviceId, summary, kicker, href, detailHref, stack } = Astro.props;
+const ticks = Array.from({ length: 14 }, (_, i) => i);
+---
+
+<article class={`rack live-rack live-rack--${variant}`}>
+  <div class="rack-head">
+    <span class="rack-live"><i class="led" aria-hidden="true"></i> LIVE</span>
+    <span class="rack-id">{serviceId}</span>
+    <span class="rack-meta">edge</span>
+  </div>
+
+  <h3 class="rack-title">
+    <a href={href} target="_blank" rel="noopener noreferrer">{title}</a>
+  </h3>
+  <p class="rack-kicker">{kicker}</p>
+  <p class="rack-summary">{summary}</p>
+
+  <div class="rack-viz" aria-hidden="true">
+    {
+      variant === "rag" ? (
+        <svg class="rack-svg" viewBox="0 0 360 72" fill="none">
+          <path class="flow" d="M8 20 H90 C120 20 120 36 150 36 H210" />
+          <path class="flow delay" d="M8 52 H90 C120 52 120 36 150 36 H210" />
+          <circle cx="210" cy="36" r="5" fill="var(--signal)" />
+          <path d="M216 36 H270" class="flow" />
+          <path d="M216 36 C240 36 250 56 280 56" class="flow warn" />
+          <text x="286" y="24" fill="var(--signal)">CITE</text>
+          <text x="286" y="60" fill="var(--warn)">REFUSE</text>
+        </svg>
+      ) : (
+        <div class="sse">
+          {ticks.map((i) => (
+            <span style={`--i: ${i}`} />
+          ))}
+        </div>
+      )
+    }
+  </div>
+
+  <div class="rack-foot">
+    <div class="tag-row">
+      {stack.slice(0, 5).map((item) => <span class="tag">{item}</span>)}
+    </div>
+    <div class="rack-actions">
+      {detailHref && (
+        <a class="rack-more" href={detailHref}>详情</a>
+      )}
+      <a class="rack-open" href={href} target="_blank" rel="noopener noreferrer">
+        OPEN CONSOLE ↗
+      </a>
+    </div>
+  </div>
+</article>

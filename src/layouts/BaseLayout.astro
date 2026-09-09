@@ -1,5 +1,7 @@
 ---
 import "../styles/global.css";
+import BrandMark from "../components/BrandMark.astro";
+import ThemeSwitch from "../components/ThemeSwitch.astro";
 
 interface Props {
   title: string;
@@ -9,8 +11,8 @@ interface Props {
 
 const {
   title,
-  description = "一个 10 年 Java 后端，经历过大厂裁员，现在在转 AI 应用和独立开发。",
-  path = "/",
+  description = "10 年 Java 分布式架构底座，企业级 AI / RAG 工程落地。只交付可引用、可拒答、可运维的系统。",
+  path,
 } = Astro.props;
 
 const navItems = [
@@ -20,8 +22,11 @@ const navItems = [
   { href: "/resume", label: "Resume" },
   { href: "/about", label: "About" },
   { href: "/now", label: "Now" },
-  { href: "https://chat.alexai.top", label: "Chat", isExternal: true },
-  { href: "https://rag.alexai.top", label: "RAG Lab", isExternal: true },
+];
+
+const liveItems = [
+  { href: "https://rag.alexai.top", label: "RAG Lab" },
+  { href: "https://chat.alexai.top", label: "Chat" },
 ];
 ---
 
@@ -32,12 +37,32 @@ const navItems = [
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="theme-color" content="#05070A" />
+    <script is:inline>
+      (function () {
+        var KEY = "alexai-theme";
+        var pref = "system";
+        try {
+          pref = localStorage.getItem(KEY) || "system";
+        } catch (e) {}
+        if (pref !== "light" && pref !== "dark" && pref !== "system") pref = "system";
+        var theme =
+          pref === "system"
+            ? window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light"
+            : pref;
+        document.documentElement.dataset.theme = theme;
+        document.documentElement.dataset.themePref = pref;
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute("content", theme === "light" ? "#F4F6F8" : "#05070A");
+      })();
+    </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    
-    <!-- Open Graph / Facebook / WeChat -->
+
     <meta property="og:type" content="website" />
     <meta property="og:url" content={Astro.url} />
-    <meta property="og:site_name" content="Alex.xyz" />
+    <meta property="og:site_name" content="alexai.top" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={new URL("/social-card.jpg", Astro.url)} />
@@ -45,96 +70,92 @@ const navItems = [
     <meta property="og:image:height" content="630" />
     <meta property="og:image:type" content="image/jpeg" />
 
-    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={Astro.url} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={new URL("/social-card.jpg", Astro.url)} />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <header class="site-header">
-      <div class="page-shell site-header-inner">
-        <a class="brand" href="/">
-          <span class="brand-mark">
-            <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px;">
-              <path d="M10 11L6 16L10 21" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M22 11L26 16L22 21" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M19 10L13 22" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-            </svg>
-          </span>
-          <span class="brand-title">Alex<span class="text-dim">.xyz</span></span>
-        </a>
-        <nav class="site-nav" aria-label="Primary">
-          {
-            navItems.map((item) => (
-              <a 
-                href={item.href} 
-                aria-current={path === item.href ? "page" : undefined}
-                target={item.isExternal ? "_blank" : undefined}
-                rel={item.isExternal ? "noopener noreferrer" : undefined}
-              >
-                {item.label}
-                {item.isExternal && (
-                  <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg" style="display: inline-block; margin-left: 4px; vertical-align: middle; opacity: 0.6;">
-                    <path d="M3.5 3H8.5V8M8.5 3L3 8.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                )}
+    <div class="app-frame">
+      <header class="site-header">
+        <div class="page-shell site-header-inner">
+          <a class="brand" href="/">
+            <span class="brand-mark"><BrandMark /></span>
+            <span class="brand-title">Alex<span class="ai">.ai</span></span>
+          </a>
+          <nav class="site-nav" aria-label="Primary">
+            {
+              navItems.map((item) => (
+                <a href={item.href} aria-current={path === item.href ? "page" : undefined}>
+                  {item.label}
+                </a>
+              ))
+            }
+          </nav>
+          <div class="header-end">
+            <nav class="site-live" aria-label="Live systems">
+              {
+                liveItems.map((item) => (
+                  <a class="nav-live" href={item.href} target="_blank" rel="noopener noreferrer">
+                    <i class="led" aria-hidden="true" />
+                    {item.label}
+                  </a>
+                ))
+              }
+            </nav>
+            <ThemeSwitch />
+          </div>
+        </div>
+      </header>
+      <main>
+        <slot />
+      </main>
+      <footer class="site-footer">
+        <div class="page-shell">
+          <div class="footer-inner">
+            <div class="footer-brand">
+              <a class="brand" href="/" style="margin-bottom: 1.25rem;">
+                <span class="brand-mark"><BrandMark /></span>
+                <span class="brand-title">Alex<span class="ai">.ai</span></span>
               </a>
-            ))
-          }
-        </nav>
-      </div>
-    </header>
-    <main>
-      <slot />
-    </main>
-    <footer class="site-footer">
-      <div class="page-shell">
-        <div class="footer-inner">
-          <div class="footer-brand">
-            <a class="brand" href="/" style="margin-bottom: 1.5rem;">
-              <span class="brand-mark">
-                <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 20px; height: 20px;">
-                  <path d="M10 11L6 16L10 21" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M22 11L26 16L22 21" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M19 10L13 22" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-                </svg>
-              </span>
-              <span class="brand-title">Alex<span class="text-dim">.xyz</span></span>
-            </a>
-            <p style="line-height: 1.8; color: var(--text-muted); max-width: 320px;">
-              10 年 Java 后端 -> AI 应用与独立开发。<br/>记录思考、项目与正在发生的职业转向。
-            </p>
+              <p style="line-height: 1.8; color: var(--text-muted); max-width: 340px;">
+                10 年分布式后端底座 × 企业级 AI / RAG。<br />
+                拒绝 Prompt 玩具，只交付生产级系统。
+              </p>
+            </div>
+            <div class="footer-nav-col">
+              <h4>Systems</h4>
+              <ul>
+                <li><a href="https://rag.alexai.top" target="_blank" rel="noopener noreferrer">Java RAG Lab</a></li>
+                <li><a href="https://chat.alexai.top" target="_blank" rel="noopener noreferrer">AI Assistant Suite</a></li>
+                <li><a href="/projects">Projects</a></li>
+                <li><a href="/writing">Writing</a></li>
+              </ul>
+            </div>
+            <div class="footer-nav-col">
+              <h4>Profile</h4>
+              <ul>
+                <li><a href="/resume">Resume</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/now">Now</a></li>
+                <li><a href="https://github.com/alexlifexyz" target="_blank" rel="noopener noreferrer">GitHub</a></li>
+              </ul>
+            </div>
           </div>
-          <div class="footer-nav-col">
-            <h4>Content</h4>
-            <ul>
-              <li><a href="/writing">Writing</a></li>
-              <li><a href="/projects">Projects</a></li>
-              <li><a href="/now">Now</a></li>
-              <li><a href="https://chat.alexai.top" target="_blank" rel="noopener noreferrer">AI Chat</a></li>
-              <li><a href="https://rag.alexai.top" target="_blank" rel="noopener noreferrer">RAG Lab</a></li>
-            </ul>
-          </div>
-          <div class="footer-nav-col">
-            <h4>Profile</h4>
-            <ul>
-              <li><a href="/resume">Resume</a></li>
-              <li><a href="/about">About</a></li>
-              <li><a href="https://github.com/alexlife" target="_blank">GitHub</a></li>
-            </ul>
+          <div class="footer-meta">
+            <p>&copy; {new Date().getFullYear()} alexai.top · deterministic systems</p>
+            <p>Astro · Cloudflare Pages</p>
           </div>
         </div>
-        <div style="margin-top: 6rem; padding-top: 2rem; border-top: 1px dashed var(--line-strong); font-size: 0.8rem; color: var(--text-dim); display: flex; justify-content: space-between; font-family: var(--mono);">
-          <p>&copy; {new Date().getFullYear()} Alex. Designed with engineering-first principles.</p>
-          <p>Built with Astro & LLM assistance.</p>
-        </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
   </body>
 </html>

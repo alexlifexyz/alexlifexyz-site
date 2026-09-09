@@ -1,0 +1,64 @@
+---
+const options = [
+  { id: "light", label: "浅色" },
+  { id: "dark", label: "深色" },
+  { id: "system", label: "系统" },
+];
+---
+
+<div class="theme-switch" role="group" aria-label="外观">
+  {
+    options.map((opt) => (
+      <button type="button" data-theme-set={opt.id} aria-pressed="false">
+        {opt.label}
+      </button>
+    ))
+  }
+</div>
+
+<script is:inline>
+  (function () {
+    var KEY = "alexai-theme";
+    var root = document.documentElement;
+    var mq = window.matchMedia("(prefers-color-scheme: dark)");
+
+    function resolve(pref) {
+      return pref === "system" ? (mq.matches ? "dark" : "light") : pref;
+    }
+
+    function paintMeta(theme) {
+      var meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.setAttribute("content", theme === "light" ? "#F4F6F8" : "#05070A");
+    }
+
+    function syncButtons(pref) {
+      document.querySelectorAll("[data-theme-set]").forEach(function (btn) {
+        btn.setAttribute("aria-pressed", String(btn.getAttribute("data-theme-set") === pref));
+      });
+    }
+
+    function apply(pref) {
+      if (pref !== "light" && pref !== "dark" && pref !== "system") pref = "system";
+      var theme = resolve(pref);
+      root.dataset.theme = theme;
+      root.dataset.themePref = pref;
+      try {
+        localStorage.setItem(KEY, pref);
+      } catch (e) {}
+      paintMeta(theme);
+      syncButtons(pref);
+    }
+
+    document.querySelectorAll("[data-theme-set]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        apply(btn.getAttribute("data-theme-set"));
+      });
+    });
+
+    mq.addEventListener("change", function () {
+      if ((root.dataset.themePref || "system") === "system") apply("system");
+    });
+
+    syncButtons(root.dataset.themePref || "system");
+  })();
+</script>

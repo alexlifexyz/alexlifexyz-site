@@ -1,0 +1,18 @@
+---
+const chips = [
+  { live: true, label: "LIVE" },
+  { live: false, label: "RAG  READY" },
+  { live: false, label: "OPEN  TO  ROLES" },
+];
+---
+
+<ul class="status-chips" aria-label="System status">
+  {
+    chips.map((chip) => (
+      <li>
+        {chip.live && <i class="led" aria-hidden="true" />}
+        {chip.label}
+      </li>
+    ))
+  }
+</ul>

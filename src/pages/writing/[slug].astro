@@ -14,7 +14,7 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 ---
 
-<BaseLayout title={`${post.data.title} | Alex`} description={post.data.description}>
+<BaseLayout title={`${post.data.title} | Alex`} description={post.data.description} path="/writing">
   <div class="content-wrap" style="padding: 6rem 0 10rem;">
     <article>
       <header style="margin-bottom: 4rem; text-align: center;">

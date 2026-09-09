@@ -1,84 +1,105 @@
 ---
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
+import HeroPipeline from "../components/HeroPipeline.astro";
+import LiveRack from "../components/LiveRack.astro";
+import StatusChips from "../components/StatusChips.astro";
 
-const posts = (await getCollection("posts", ({ data }) => !data.draft))
-  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+const posts = (await getCollection("posts", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
+);
 const featuredPosts = posts.slice(0, 3);
 
-const projects = (await getCollection("projects"))
-  .sort((a, b) => (b.data.featured ? 1 : 0) - (a.data.featured ? 1 : 0))
-  .slice(0, 3);
+const projects = await getCollection("projects");
+const rag = projects.find((p) => p.slug === "java-rag-lab");
+const chat = projects.find((p) => p.slug === "ai-assistant-suite");
+const rest = projects.filter(
+  (p) => p.slug !== "java-rag-lab" && p.slug !== "ai-assistant-suite",
+);
 ---
 
-<BaseLayout title="Alex.xyz" path="/">
+<BaseLayout title="Alex.ai — Enterprise RAG & Java AI Systems" path="/">
   <section class="hero">
     <div class="page-shell hero-identity">
       <div class="hero-content">
-        <span class="section-label mono">Architecture & AI Engineering</span>
-        <h1>10 年分布式后端底座，<br/>专注企业级 AI 与 RAG 落地。</h1>
+        <p class="hero-kicker">SYS · alexai.top · edge</p>
+        <StatusChips />
+        <h1>10 年分布式后端底座，<br />专注企业级 AI 与 RAG 落地。</h1>
         <p class="hero-lead">
-          以系统高可用与工程纪律为根基，专注构建私有知识库混合检索（RAG）、大模型工程编排与高确定性系统交付。拒绝纸上谈兵，只交付生产级代码。
+          拒绝 Prompt 玩具。只交付可引用、可拒答、可运维的系统——混合检索、置信度门控、生产级编排。
         </p>
-        <div style="margin-top: 3.5rem; display: flex; gap: 1.25rem;">
-          <a class="btn btn-primary" href="/resume">查看完整简历</a>
-          <a class="btn btn-outline" href="/projects">代表项目</a>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://rag.alexai.top" target="_blank" rel="noopener noreferrer">
+            打开 RAG Lab
+          </a>
+          <a class="btn btn-outline" href="/resume">查看履历</a>
         </div>
       </div>
-      
-      <div class="hero-dashboard">
-        <div class="dash-header">
-          <div class="dash-dot red"></div>
-          <div class="dash-dot yellow"></div>
-          <div class="dash-dot green"></div>
+      <HeroPipeline />
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="page-shell">
+      <div class="section-header">
+        <span class="section-label mono">Live Production</span>
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem;">
+          <h2>在线系统</h2>
+          <a href="/projects" class="section-link">VIEW ALL -></a>
         </div>
-        <div class="dash-line">
-          <span class="dash-key">const</span> alex = &#123;
-        </div>
-        <div class="dash-line" style="padding-left: 1.5rem;">
-          <span class="dash-key">role</span>: <span class="dash-val">"Senior Architect / AI Engineer"</span>,
-        </div>
-        <div class="dash-line" style="padding-left: 1.5rem;">
-          <span class="dash-key">experience</span>: <span class="dash-val">"10y+ Distributed Systems"</span>,
-        </div>
-        <div class="dash-line" style="padding-left: 1.5rem;">
-          <span class="dash-key">core_focus</span>: <span class="dash-val">"Enterprise RAG & LLM Orchestration"</span>,
-        </div>
-        <div class="dash-line" style="padding-left: 1.5rem;">
-          <span class="dash-key">production_apps</span>: [<span class="dash-val">"Java RAG Lab"</span>, <span class="dash-val">"AI Assistant Suite"</span>],
-        </div>
-        <div class="dash-line" style="padding-left: 1.5rem;">
-          <span class="dash-key">status</span>: <span class="dash-val">"Open for Senior Roles"</span>
-        </div>
-        <div class="dash-line">
-          &#125;;
-        </div>
-        <div class="dash-line" style="margin-top: 1rem;">
-          <span class="dash-comment">// Production-grade LLM Orchestration & Low-hallucination RAG</span>
-        </div>
-        <div class="dash-line">
-          <span class="dash-key">alex</span>.deliver(<span class="dash-val">"High-reliability Engineering"</span>);
-        </div>
+      </div>
+
+      <div class="live-grid">
+        {
+          rag && (
+            <LiveRack
+              variant="rag"
+              title={rag.data.title}
+              serviceId="svc.rag"
+              kicker="BM25 ∥ Vector → RRF → Cite | Refuse"
+              summary={rag.data.summary}
+              href={rag.data.links?.demo ?? "https://rag.alexai.top"}
+              detailHref={`/projects/${rag.slug}/`}
+              stack={rag.data.stack}
+            />
+          )
+        }
+        {
+          chat && (
+            <LiveRack
+              variant="chat"
+              title={chat.data.title}
+              serviceId="svc.chat"
+              kicker="token stream · session memory · zero-trust edge"
+              summary={chat.data.summary}
+              href={chat.data.links?.demo ?? "https://chat.alexai.top"}
+              detailHref={`/projects/${chat.slug}/`}
+              stack={chat.data.stack}
+            />
+          )
+        }
       </div>
     </div>
   </section>
 
-  <section class="section" style="background: var(--surface-muted); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);">
+  <section class="section">
     <div class="page-shell">
       <div class="section-header">
         <span class="section-label mono">Featured Writing</span>
-        <div style="display: flex; justify-content: space-between; align-items: flex-end;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem;">
           <h2>精选文章</h2>
-          <a href="/writing" class="mono" style="font-size: 0.8rem; font-weight: 600;">VIEW ALL -></a>
+          <a href="/writing" class="section-link">VIEW ALL -></a>
         </div>
       </div>
-      
+
       <div class="item-list">
         {
           featuredPosts.map((post) => (
             <div class="list-item">
               <div class="item-date">
-                {post.data.pubDate.toLocaleDateString("zh-CN", { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/\//g, '.')}
+                {post.data.pubDate
+                  .toLocaleDateString("zh-CN", { year: "numeric", month: "2-digit", day: "2-digit" })
+                  .replace(/\//g, ".")}
               </div>
               <div class="item-body">
                 <a href={`/writing/${post.slug}/`} style="text-decoration: none;">
@@ -86,7 +107,9 @@ const projects = (await getCollection("projects"))
                 </a>
                 <p>{post.data.description}</p>
                 <div class="tag-row">
-                  <span class="tag" style="background: var(--accent-soft); color: var(--accent); border-color: var(--accent-soft);">{post.data.category}</span>
+                  <span class="tag" style="background: var(--signal-dim); color: var(--signal); border-color: transparent;">
+                    {post.data.category}
+                  </span>
                   {post.data.tags.slice(0, 2).map((tag) => (
                     <span class="tag">{tag}</span>
                   ))}
@@ -99,68 +122,66 @@ const projects = (await getCollection("projects"))
     </div>
   </section>
 
-  <section class="section">
-    <div class="page-shell">
-      <div class="section-header">
-        <span class="section-label mono">Projects</span>
-        <div style="display: flex; justify-content: space-between; align-items: flex-end;">
-          <h2>代表项目</h2>
-          <a href="/projects" class="mono" style="font-size: 0.8rem; font-weight: 600;">VIEW ALL -></a>
+  {
+    rest.length > 0 && (
+      <section class="section" style="padding-top: 0;">
+        <div class="page-shell">
+          <div class="section-header">
+            <span class="section-label mono">Also Building</span>
+            <h2>其他项目</h2>
+          </div>
+          <div class="card-grid">
+            {rest.map((project) => (
+              <a class="card-link" href={`/projects/${project.slug}/`}>
+                <div class="panel" style="padding: 1.6rem; height: 100%; display: flex; flex-direction: column;">
+                  <div class="mono" style="font-size: 0.72rem; color: var(--text-dim); margin-bottom: 0.9rem; display: flex; justify-content: space-between; letter-spacing: 0.08em; text-transform: uppercase;">
+                    <span>{project.data.year}</span>
+                    <span style="color: var(--signal);">{project.data.status}</span>
+                  </div>
+                  <h3 style="margin-bottom: 0.75rem; font-size: 1.15rem;">{project.data.title}</h3>
+                  <p style="font-size: 0.92rem; color: var(--text-muted); flex-grow: 1; margin-bottom: 1.15rem;">
+                    {project.data.summary}
+                  </p>
+                  <div class="tag-row">
+                    {project.data.stack.map((item) => (
+                      <span class="tag">{item}</span>
+                    ))}
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
         </div>
-      </div>
-      
-      <div class="card-grid">
-        {
-          projects.map((project) => (
-            <a class="card-link" href={`/projects/${project.slug}/`}>
-              <div class="panel" style="padding: 2rem; height: 100%; display: flex; flex-direction: column;">
-                <div class="mono" style="font-size: 0.75rem; color: var(--text-dim); margin-bottom: 1rem; display: flex; justify-content: space-between;">
-                  <span>{project.data.year}</span>
-                  <span style="color: var(--accent);">{project.data.status}</span>
-                </div>
-                <h3 style="margin-bottom: 1rem; font-size: 1.25rem;">{project.data.title}</h3>
-                <p style="font-size: 0.95rem; color: var(--text-muted); flex-grow: 1; margin-bottom: 1.5rem;">{project.data.summary}</p>
-                <div class="tag-row">
-                  {project.data.stack.map((item) => (
-                    <span class="tag" style="font-size: 0.65rem;">{item}</span>
-                  ))}
-                </div>
-              </div>
-            </a>
-          ))
-        }
-      </div>
-    </div>
-  </section>
+      </section>
+    )
+  }
 
-  <section class="section" style="border-top: 1px solid var(--line); background: #fafafa;">
-    <div class="page-shell">
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center;">
-        <div>
-          <span class="section-label mono">Now</span>
-          <h2>正在关注</h2>
-          <p style="margin-top: 1.5rem; font-size: 1.1rem; color: var(--text-muted); line-height: 1.8;">
-            深耕企业级 RAG、Agent 编排与大模型工程化落地，同时构建个人技术矩阵。比起概念炒作，我更看重复杂工程边界下的防幻觉、低成本与真实业务交付力。
-          </p>
-          <div style="margin-top: 2.5rem; display: flex; gap: 1.5rem; align-items: center;">
-            <a class="btn btn-outline" href="/now">详细状态</a>
-            <span class="mono" style="font-size: 0.8rem; color: var(--text-dim);">Last updated: 2026.09</span>
-          </div>
+  <section class="section band">
+    <div class="page-shell now-split">
+      <div>
+        <span class="section-label mono">Now</span>
+        <h2>正在关注</h2>
+        <p style="margin-top: 1.25rem; font-size: 1.05rem; color: var(--text-muted); line-height: 1.8;">
+          深耕企业级 RAG、Agent 编排与大模型工程化落地。比起概念炒作，更看重复杂边界下的防幻觉、低成本与真实业务交付。
+        </p>
+        <div style="margin-top: 2rem; display: flex; gap: 1.25rem; align-items: center; flex-wrap: wrap;">
+          <a class="btn btn-outline" href="/now">详细状态</a>
+          <span class="mono" style="font-size: 0.75rem; color: var(--text-dim);">Last updated: 2026.09</span>
         </div>
-        <div class="panel" style="padding: 2.5rem; border-style: dashed; background: var(--surface);">
-          <div class="mono" style="font-size: 0.85rem; line-height: 2;">
-            <div style="color: var(--accent); font-weight: 600; margin-bottom: 1rem;">// Modern Stack Exploration</div>
-            <div style="display: grid; grid-template-columns: 80px 1fr; gap: 0.5rem;">
-              <span style="color: var(--text-dim);">[LLM]</span>
-              <span>DeepSeek V4 / Claude 3.7</span>
-              <span style="color: var(--text-dim);">[ARCH]</span>
-              <span>Hybrid RAG / Multi-Agent</span>
-              <span style="color: var(--text-dim);">[LANG]</span>
-              <span>Java 21 / TypeScript / Python</span>
-              <span style="color: var(--text-dim);">[INFRA]</span>
-              <span>GCP Spot / Cloudflare Zero Trust</span>
-            </div>
-          </div>
+      </div>
+      <div class="rack now-panel">
+        <div class="mono" style="font-size: 0.72rem; letter-spacing: 0.12em; color: var(--signal); margin-bottom: 1rem; text-transform: uppercase;">
+          // stack · current
+        </div>
+        <div class="now-grid">
+          <span style="color: var(--text-dim);">[LLM]</span>
+          <span>DeepSeek V4 / Claude</span>
+          <span style="color: var(--text-dim);">[ARCH]</span>
+          <span>Hybrid RAG / Multi-Agent</span>
+          <span style="color: var(--text-dim);">[LANG]</span>
+          <span>Java 21 / TypeScript</span>
+          <span style="color: var(--text-dim);">[INFRA]</span>
+          <span>GCP Spot / Cloudflare</span>
         </div>
       </div>
     </div>

@@ -2,9 +2,12 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 
-const projects = (await getCollection("projects")).sort((a, b) =>
-  Number(b.data.featured) - Number(a.data.featured),
-);
+const rank = (status: string) => (status === "live" ? 2 : status === "building" ? 1 : 0);
+const projects = (await getCollection("projects")).sort((a, b) => {
+  const byStatus = rank(b.data.status) - rank(a.data.status);
+  if (byStatus !== 0) return byStatus;
+  return Number(b.data.featured) - Number(a.data.featured);
+});
 ---
 
 <BaseLayout title="Projects | Alex" path="/projects">

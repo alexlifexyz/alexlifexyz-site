@@ -1,0 +1,56 @@
+---
+---
+
+<div class="hero-console" role="img" aria-label="Hybrid retrieval pipeline: query splits into BM25 and vector, merges with RRF, then cite or refuse.">
+  <div class="console-bar">
+    <span class="led" aria-hidden="true"></span>
+    <span class="console-title">PIPELINE · hybrid-retrieval</span>
+    <span class="console-meta">cite | refuse</span>
+  </div>
+
+  <ol class="pipeline-mobile">
+    <li>QUERY</li>
+    <li>BM25 ∥ VECTOR</li>
+    <li>RRF</li>
+    <li>CITE <span class="warn-text">| REFUSE</span></li>
+  </ol>
+  <div class="pipeline-wrap">
+  <svg
+    class="pipeline-svg"
+    viewBox="0 0 520 220"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+    preserveAspectRatio="xMidYMid meet"
+  >
+    <path class="flow" d="M104 110 C 140 110, 150 52, 180 52" />
+    <path class="flow delay" d="M104 110 C 140 110, 150 168, 180 168" />
+    <path class="flow" d="M260 52 C 290 52, 294 110, 320 110" />
+    <path class="flow delay" d="M268 168 C 294 168, 294 110, 320 110" />
+    <path class="flow" d="M346 110 C 380 110, 390 52, 420 52" />
+    <path class="flow warn" d="M346 110 C 380 110, 390 168, 420 168" />
+
+    <rect x="24" y="94" width="80" height="32" rx="4" class="node" />
+    <text x="64" y="114" text-anchor="middle">QUERY</text>
+
+    <rect x="180" y="36" width="80" height="32" rx="4" class="node" />
+    <text x="220" y="56" text-anchor="middle">BM25</text>
+
+    <rect x="180" y="152" width="88" height="32" rx="4" class="node" />
+    <text x="224" y="172" text-anchor="middle">VECTOR</text>
+
+    <circle cx="320" cy="110" r="26" class="node-core" />
+    <text x="320" y="114" text-anchor="middle">RRF</text>
+
+    <rect x="420" y="36" width="80" height="32" rx="4" class="node" />
+    <text x="460" y="56" text-anchor="middle">CITE</text>
+
+    <rect x="420" y="152" width="80" height="32" rx="4" class="node warn-node" />
+    <text x="460" y="172" text-anchor="middle" class="warn-text">REFUSE</text>
+  </svg>
+  </div>
+
+  <div class="console-foot">
+    <span class="cursor-line">alex@edge — awaiting query<span class="blk">█</span></span>
+  </div>
+</div>

@@ -14,7 +14,7 @@ const { project } = Astro.props;
 const { Content } = await render(project);
 ---
 
-<BaseLayout title={`${project.data.title} | Alex`} description={project.data.summary}>
+<BaseLayout title={`${project.data.title} | Alex`} description={project.data.summary} path="/projects">
   <div class="content-wrap" style="padding: 6rem 0 10rem;">
     <article>
       <header style="margin-bottom: 5rem;">
