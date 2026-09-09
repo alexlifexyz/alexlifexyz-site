@@ -12,7 +12,7 @@ year: "2026"
 featured: true
 links:
   demo: "https://rag.alexai.top"
-  repo: "https://github.com/alexlife/java-rag-lab"
+  repo: "https://github.com/alexlifexyz/java-rag-lab"
 ---
 
 这是我在企业级私有知识库场景下深度打磨的 Java Native RAG 实践。

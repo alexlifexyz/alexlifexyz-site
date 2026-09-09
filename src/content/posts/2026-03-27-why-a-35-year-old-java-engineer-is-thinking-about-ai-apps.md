@@ -1,13 +1,12 @@
 ---
-title: "一个 35 岁 Java 程序员，为什么开始认真想做 AI 应用和一人公司"
-description: "不是因为热血上头，而是越来越确定，不能继续只做一个还能工作的程序员。"
+title: "十年 Java 架构师视角：为什么大模型时代更需要扎实的工程底座？"
+description: "从高并发微服务到 AI 编排，聊聊成熟工程思维如何赋能生成式 AI 的商业落地。"
 pubDate: 2026-03-27
 featured: true
 tags:
-  - 职业转型
+  - 架构演进
+  - Java
   - AI应用
-  - 一人公司
-  - 生存录
 category: career
 draft: false
 ---

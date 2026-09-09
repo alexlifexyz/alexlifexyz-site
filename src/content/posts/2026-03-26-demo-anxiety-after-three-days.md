@@ -1,13 +1,12 @@
 ---
-title: "我用 AI 三天做完一个 Demo，却更怀疑自己还能靠什么吃饭"
-description: "当“能做出来”越来越不稀缺，真正重新变贵的，是问题判断、场景理解和工程兜底。"
+title: "3 天搭出 AI 原型并不难，为什么企业级落地依然难于登天？"
+description: "当原型构建越来越廉价，真正重新变贵的，是工程确定性、场景理解与生产架构兜底。"
 pubDate: 2026-03-26
-featured: false
+featured: true
 tags:
-  - Demo
   - AI应用
-  - 工程价值
-  - 生存录
+  - 工程架构
+  - 生产落地
 category: ai
 draft: false
 ---

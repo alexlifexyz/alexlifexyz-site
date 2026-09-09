@@ -2,14 +2,12 @@
 title: "被大厂裁掉后，我去了国企外包，然后更焦虑了"
 description: "真正磨人的不是失业本身，而是你开始怀疑自己会不会越来越不适合接下来的世界。"
 pubDate: 2026-03-25
-featured: true
+featured: false
 tags:
-  - 裁员
-  - 外包
-  - 职业转型
-  - 生存录
+  - 职业思考
+  - 架构师手记
 category: career
-draft: false
+draft: true
 ---
 
 被裁那天，我其实没什么戏剧性的反应。

@@ -10,13 +10,13 @@ stack:
 year: "2026"
 featured: true
 links:
-  url: "https://chat.alexai.top"
-  repo: "https://github.com/alexlife/ai-assistant-suite"
+  demo: "https://chat.alexai.top"
+  repo: "https://github.com/alexlifexyz/ai-assistant-suite"
 ---
 
-这是我从 Java 后端转型 AI 应用开发的核心代表作。
+这是我将 10 年高可用 Java 架构与前沿 LLM 工程编排深度融合的代表项目之一。
 
-它不仅是一个简单的聊天界面，而是一套完整的 AI 增强方案。
+它不仅是一个简单的聊天界面，而是一套完整的企业级 AI 增强方案。
 
 核心组件包括：
 
