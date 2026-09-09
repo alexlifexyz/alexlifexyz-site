@@ -49,13 +49,13 @@
         localStorage.setItem(KEY, theme);
       } catch (e) {}
       paintMeta(theme);
-      btn.setAttribute("aria-label", theme === "light" ? "切换到深色" : "切换到浅色");
+      btn.setAttribute("aria-label", theme === "light" ? "当前浅色，点击切换到深色" : "当前深色，点击切换到浅色");
     }
 
     btn.addEventListener("click", function () {
       apply(current() === "light" ? "dark" : "light");
     });
 
-    btn.setAttribute("aria-label", current() === "light" ? "切换到深色" : "切换到浅色");
+    btn.setAttribute("aria-label", current() === "light" ? "当前浅色，点击切换到深色" : "当前深色，点击切换到浅色");
   })();
 </script>
