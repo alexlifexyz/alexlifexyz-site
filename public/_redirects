@@ -1,0 +1,4 @@
+/writing/*  https://blog.alexai.top/posts/:splat  301
+/writing    https://blog.alexai.top/               301
+/archive    https://blog.alexai.top/archive        301
+/tags/*     https://blog.alexai.top/tags/:splat    301
