@@ -1,0 +1,84 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCategoryMeta } from "../../utils/categories";
+
+export async function getStaticPaths() {
+  const allPosts = await getCollection("posts", ({ data }) => !data.draft);
+  const tags = new Set<string>();
+  
+  allPosts.forEach((post) => {
+    (post.data.tags || []).forEach((t) => tags.add(t));
+  });
+
+  return Array.from(tags).map((tag) => {
+    const filteredPosts = allPosts
+      .filter((post) => (post.data.tags || []).includes(tag))
+      .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+    return {
+      params: { tag },
+      props: { posts: filteredPosts, tag },
+    };
+  });
+}
+
+const { tag, posts } = Astro.props;
+---
+
+<BaseLayout title={`#${tag} | 专栏标签 - 何占伟 / Alex`} path="/writing">
+  <div class="content-wrap" style="padding: 5rem 0 8rem;">
+    <div style="margin-bottom: 3rem;">
+      <a href="/writing" class="back-link mono">← 返回专栏大厅</a>
+      <div style="display: flex; align-items: baseline; gap: 1rem; margin-top: 1.5rem; flex-wrap: wrap;">
+        <h1 style="font-size: 2.75rem; letter-spacing: -0.04em; margin: 0;">#{tag}</h1>
+        <span class="mono" style="color: var(--text-dim); font-size: 1rem;">共 {posts.length} 篇文章</span>
+      </div>
+    </div>
+
+    <div class="item-list">
+      {
+        posts.map((post) => {
+          const cat = getCategoryMeta(post.data.category);
+          return (
+            <div class="list-item">
+              <div class="item-date">
+                {post.data.pubDate.toLocaleDateString("zh-CN", { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/\//g, '.')}
+              </div>
+              <div class="item-body">
+                <a href={`/writing/${post.slug}/`} style="text-decoration: none;">
+                  <h3 style="font-size: 1.35rem; margin-bottom: 0.75rem; transition: color 0.2s ease;">{post.data.title}</h3>
+                </a>
+                <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1rem;">
+                  {post.data.description}
+                </p>
+                <div class="tag-row">
+                  <span class="tag" style="background: var(--accent-soft); color: var(--accent); border-color: var(--accent-soft);">{cat.name}</span>
+                  {post.data.tags.map((t) => (
+                    <a href={`/tags/${t}`} class={`tag ${t === tag ? 'tag-active' : ''}`} style="text-decoration: none;">{t}</a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .back-link {
+    font-size: 0.85rem;
+    color: var(--accent);
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+  .back-link:hover {
+    opacity: 0.8;
+  }
+  .tag-active {
+    background: var(--accent);
+    color: #fff;
+    border-color: var(--accent);
+  }
+</style>

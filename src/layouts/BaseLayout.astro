@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import BrandMark from "../components/BrandMark.astro";
 import ThemeSwitch from "../components/ThemeSwitch.astro";
+import SearchModal from "../components/SearchModal.astro";
 
 interface Props {
   title: string;
@@ -99,6 +100,13 @@ const liveItems = [
                 </a>
               ))
             }
+            <button class="nav-search-btn print-hide" data-open-search title="搜索文章 (快捷键 ⌘K 或 /)" aria-label="全站搜索">
+              <svg class="search-btn-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <span class="search-btn-kbd mono">⌘K</span>
+            </button>
           </nav>
           <nav class="site-live" aria-label="Live systems">
             {
@@ -154,5 +162,6 @@ const liveItems = [
         </div>
       </footer>
     </div>
+    <SearchModal />
   </body>
 </html>

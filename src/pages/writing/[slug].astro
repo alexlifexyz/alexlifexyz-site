@@ -3,6 +3,8 @@ import { getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import TableOfContents from "../../components/TableOfContents.astro";
 import CopyCodeScript from "../../components/CopyCodeScript.astro";
+import WeChatCard from "../../components/WeChatCard.astro";
+import { getCategoryMeta } from "../../utils/categories";
 
 export async function getStaticPaths() {
   const posts = (await getCollection("posts", ({ data }) => !data.draft)).sort(
@@ -20,6 +22,7 @@ export async function getStaticPaths() {
 
 const { post, prevPost, nextPost } = Astro.props;
 const { Content, headings } = await render(post);
+const catMeta = getCategoryMeta(post.data.category);
 
 // 计算字数与阅读时长
 const rawContent = post.body || "";
@@ -35,10 +38,10 @@ const readTimeMinutes = Math.max(1, Math.ceil(totalWords / 350));
 
   <div class="content-wrap page-block">
     <div class="article-layout">
-      <article class="article-main">
+      <article class="article-main" data-pagefind-body>
         <header class="article-header">
           <div class="article-meta mono">
-            <span class="article-category">{post.data.category}</span>
+            <span class="article-category" style={`color: ${catMeta.color};`}>{catMeta.name}</span>
             <span class="meta-sep">·</span>
             <time datetime={post.data.pubDate.toISOString()}>
               {post.data.pubDate.toLocaleDateString("zh-CN", { year: "numeric", month: "2-digit", day: "2-digit" }).replace(/\//g, ".")}
@@ -54,7 +57,7 @@ const readTimeMinutes = Math.max(1, Math.ceil(totalWords / 350));
 
           <div class="tag-row">
             {post.data.tags.map((tag) => (
-              <span class="tag">#{tag}</span>
+              <a href={`/tags/${tag}`} class="tag" style="text-decoration: none;">#{tag}</a>
             ))}
           </div>
         </header>
@@ -63,8 +66,13 @@ const readTimeMinutes = Math.max(1, Math.ceil(totalWords / 350));
           <Content />
         </div>
 
+        <!-- 微信公众号引流名片 -->
+        <div class="print-hide" data-pagefind-ignore>
+          <WeChatCard variant="footer" />
+        </div>
+
         <!-- 上一篇 / 下一篇导航 -->
-        <nav class="post-nav print-hide" aria-label="文章翻页导航">
+        <nav class="post-nav print-hide" aria-label="文章翻页导航" data-pagefind-ignore>
           {prevPost ? (
             <a href={`/writing/${prevPost.slug}/`} class="post-nav-card prev">
               <span class="post-nav-label mono">← 上一篇</span>
@@ -83,7 +91,7 @@ const readTimeMinutes = Math.max(1, Math.ceil(totalWords / 350));
           )}
         </nav>
 
-        <footer class="article-end">
+        <footer class="article-end" data-pagefind-ignore>
           <div>
             <h4>何占伟 / Alex</h4>
             <p>成都。11 年 Java 后端，正在把 RAG 做成可演示的工程。</p>

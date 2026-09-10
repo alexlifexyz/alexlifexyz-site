@@ -327,6 +327,52 @@ html:not([data-theme="light"]) .theme-icon-moon {
   background: var(--elevated);
 }
 
+.nav-search-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  color: var(--text-muted);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  line-height: 1;
+  margin-left: 2px;
+}
+
+.nav-search-btn:hover {
+  color: var(--text);
+  border-color: var(--accent);
+  background: var(--elevated);
+}
+
+.search-btn-icon {
+  display: inline-block;
+  opacity: 0.8;
+  color: currentColor;
+}
+
+.search-btn-kbd {
+  font-size: 0.62rem;
+  font-family: var(--mono);
+  padding: 1px 4px;
+  border-radius: 3px;
+  background: var(--elevated);
+  border: 1px solid var(--line);
+  color: var(--text-dim);
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+}
+
+.nav-search-btn:hover .search-btn-kbd {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 .site-live {
   padding-right: 0.85rem;
   border-right: 1px solid var(--line);
@@ -1577,6 +1623,15 @@ html[data-theme="light"] .rack {
     font-size: 0.68rem;
     padding: 4px 6px;
     white-space: nowrap;
+  }
+
+  .nav-search-btn {
+    padding: 3px 6px;
+    font-size: 0.68rem;
+  }
+
+  .nav-search-btn .search-btn-kbd {
+    display: none;
   }
 
   .hero-actions {
