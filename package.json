@@ -10,8 +10,8 @@
     "preview": "astro preview",
     "check": "astro check",
     "sync:wechat": "python3 scripts/sync-wechat-posts.py",
-    "cf:deploy": "npm run build && npx wrangler pages deploy dist --project-name alexlifexyz-site",
-    "cf:deploy:branch": "npm run build && npx wrangler pages deploy dist --project-name alexlifexyz-site --branch preview"
+    "cf:deploy": "bash scripts/deploy-pages.sh",
+    "cf:deploy:branch": "bash scripts/deploy-pages.sh --branch preview"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",
