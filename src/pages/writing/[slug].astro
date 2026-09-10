@@ -1,50 +1,120 @@
 ---
 import { getCollection, render } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+import TableOfContents from "../../components/TableOfContents.astro";
+import CopyCodeScript from "../../components/CopyCodeScript.astro";
 
 export async function getStaticPaths() {
-  const posts = await getCollection("posts", ({ data }) => !data.draft);
-  return posts.map((post) => ({
+  const posts = (await getCollection("posts", ({ data }) => !data.draft)).sort(
+    (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
+  );
+  return posts.map((post, index) => ({
     params: { slug: post.slug },
-    props: { post },
+    props: {
+      post,
+      prevPost: index < posts.length - 1 ? posts[index + 1] : null,
+      nextPost: index > 0 ? posts[index - 1] : null,
+    },
   }));
 }
 
-const { post } = Astro.props;
-const { Content } = await render(post);
+const { post, prevPost, nextPost } = Astro.props;
+const { Content, headings } = await render(post);
+
+// 计算字数与阅读时长
+const rawContent = post.body || "";
+const cnWords = (rawContent.match(/[\u4e00-\u9fa5]/g) || []).length;
+const enWords = (rawContent.match(/[a-zA-Z0-9_\-]+/g) || []).length;
+const totalWords = cnWords + enWords;
+const readTimeMinutes = Math.max(1, Math.ceil(totalWords / 350));
 ---
 
-<BaseLayout title={`${post.data.title} | Alex`} description={post.data.description} path="/writing">
-  <div class="content-wrap" style="padding: 6rem 0 10rem;">
-    <article>
-      <header style="margin-bottom: 4rem; text-align: center;">
-        <div class="mono" style="font-size: 0.9rem; color: var(--accent); margin-bottom: 1.5rem; font-weight: 600;">
-          {post.data.category} · {post.data.pubDate.toLocaleDateString("zh-CN", { year: 'numeric', month: '2-digit', day: '2-digit' }).replace(/\//g, '.')}
+<BaseLayout title={`${post.data.title} | 何占伟`} description={post.data.description} path="/writing">
+  <!-- 顶部细线发光阅读进度条 -->
+  <div class="reading-progress-bar print-hide" id="reading-progress" aria-hidden="true"></div>
+
+  <div class="content-wrap page-block">
+    <div class="article-layout">
+      <article class="article-main">
+        <header class="article-header">
+          <div class="article-meta mono">
+            <span class="article-category">{post.data.category}</span>
+            <span class="meta-sep">·</span>
+            <time datetime={post.data.pubDate.toISOString()}>
+              {post.data.pubDate.toLocaleDateString("zh-CN", { year: "numeric", month: "2-digit", day: "2-digit" }).replace(/\//g, ".")}
+            </time>
+            <span class="meta-sep">·</span>
+            <span>约 {readTimeMinutes} 分钟</span>
+            <span class="meta-sep">·</span>
+            <span>{totalWords.toLocaleString()} 字</span>
+          </div>
+
+          <h1 class="article-title">{post.data.title}</h1>
+          <p class="article-desc">{post.data.description}</p>
+
+          <div class="tag-row">
+            {post.data.tags.map((tag) => (
+              <span class="tag">#{tag}</span>
+            ))}
+          </div>
+        </header>
+
+        <div class="prose">
+          <Content />
         </div>
-        <h1 style="font-size: clamp(2rem, 5vw, 3rem); line-height: 1.2; margin-bottom: 2rem; letter-spacing: -0.03em;">
-          {post.data.title}
-        </h1>
-        <p style="font-size: 1.2rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 2.5rem; line-height: 1.6;">
-          {post.data.description}
-        </p>
-        <div class="tag-row" style="justify-content: center;">
-          {post.data.tags.map((tag) => (
-            <span class="tag">#{tag}</span>
-          ))}
-        </div>
-      </header>
-      
-      <div class="prose">
-        <Content />
-      </div>
-      
-      <footer class="article-end">
-        <div>
-          <h4>何占伟 / Alex</h4>
-          <p>成都。11 年 Java 后端，正在把 RAG 做成可演示的工程。</p>
-        </div>
-        <a href="/writing" class="btn btn-outline btn-compact">返回文章列表</a>
-      </footer>
-    </article>
+
+        <!-- 上一篇 / 下一篇导航 -->
+        <nav class="post-nav print-hide" aria-label="文章翻页导航">
+          {prevPost ? (
+            <a href={`/writing/${prevPost.slug}/`} class="post-nav-card prev">
+              <span class="post-nav-label mono">← 上一篇</span>
+              <span class="post-nav-title">{prevPost.data.title}</span>
+            </a>
+          ) : (
+            <div class="post-nav-card empty"></div>
+          )}
+          {nextPost ? (
+            <a href={`/writing/${nextPost.slug}/`} class="post-nav-card next">
+              <span class="post-nav-label mono">下一篇 →</span>
+              <span class="post-nav-title">{nextPost.data.title}</span>
+            </a>
+          ) : (
+            <div class="post-nav-card empty"></div>
+          )}
+        </nav>
+
+        <footer class="article-end">
+          <div>
+            <h4>何占伟 / Alex</h4>
+            <p>成都。11 年 Java 后端，正在把 RAG 做成可演示的工程。</p>
+          </div>
+          <a href="/writing" class="btn btn-outline btn-compact">返回文章列表</a>
+        </footer>
+      </article>
+
+      <!-- 右侧粘性目录大纲 -->
+      <TableOfContents headings={headings} />
+    </div>
   </div>
+
+  <!-- 代码块一键复制脚本 -->
+  <CopyCodeScript />
+
+  <!-- 阅读进度监听脚本 -->
+  <script is:inline>
+    (function () {
+      var bar = document.getElementById("reading-progress");
+      if (!bar) return;
+
+      function update() {
+        var scrollTop = window.scrollY || document.documentElement.scrollTop;
+        var scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
+        var progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+        bar.style.width = Math.min(100, Math.max(0, progress)) + "%";
+      }
+
+      window.addEventListener("scroll", update, { passive: true });
+      update();
+    })();
+  </script>
 </BaseLayout>
