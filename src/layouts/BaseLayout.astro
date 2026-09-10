@@ -54,10 +54,6 @@ const liveItems = [
         document.documentElement.dataset.themePref = pref;
         var meta = document.querySelector('meta[name="theme-color"]');
         if (meta) meta.setAttribute("content", theme === "light" ? "#F4F6F8" : "#05070A");
-
-        if (window.location.hostname === "blog.alexai.top" && (window.location.pathname === "/" || window.location.pathname === "")) {
-          window.location.replace("/writing/");
-        }
       })();
     </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
