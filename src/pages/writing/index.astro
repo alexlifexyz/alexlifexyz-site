@@ -58,7 +58,7 @@ const sortedTags = Array.from(tagMap.entries())
     {
       featuredPosts.length > 0 && (
         <section class="featured-section">
-          <div class="section-badge mono">🔥 精选必读</div>
+          <div class="section-badge mono">精选必读</div>
           <div class="featured-grid">
             {featuredPosts.map((post) => {
               const cat = getCategoryMeta(post.data.category);
@@ -66,7 +66,7 @@ const sortedTags = Array.from(tagMap.entries())
                 <a href={`/writing/${post.slug}/`} class="featured-card">
                   <div class="featured-top">
                     <span class="cat-pill" style={`color: ${cat.color}; background: color-mix(in srgb, ${cat.color} 12%, transparent);`}>
-                      {cat.icon} {cat.name}
+                      {cat.name}
                     </span>
                     <span class="featured-date mono">
                       {post.data.pubDate.toLocaleDateString("zh-CN", { month: "short", day: "numeric" })}
@@ -95,22 +95,26 @@ const sortedTags = Array.from(tagMap.entries())
               全部 <span class="tab-count">{categoryCounts["all"]}</span>
             </button>
             <button class="cat-tab" data-cat="ai-engineering">
-              ⚡ AI 工业落地 <span class="tab-count">{categoryCounts["ai-engineering"]}</span>
+              AI 工业落地 <span class="tab-count">{categoryCounts["ai-engineering"]}</span>
             </button>
             <button class="cat-tab" data-cat="architecture">
-              🏗️ Java 架构 <span class="tab-count">{categoryCounts["architecture"]}</span>
+              Java 架构 <span class="tab-count">{categoryCounts["architecture"]}</span>
             </button>
             <button class="cat-tab" data-cat="insights">
-              🔭 行业观察 <span class="tab-count">{categoryCounts["insights"]}</span>
+              行业观察 <span class="tab-count">{categoryCounts["insights"]}</span>
             </button>
             <button class="cat-tab" data-cat="essays">
-              ☕ 随笔生活 <span class="tab-count">{categoryCounts["essays"]}</span>
+              随笔生活 <span class="tab-count">{categoryCounts["essays"]}</span>
             </button>
           </div>
 
           <div class="view-switcher" id="view-switcher">
-            <button class="view-btn active" data-view="card" title="卡片摘要视图">🗂️</button>
-            <button class="view-btn" data-view="compact" title="紧凑列表视图">📋</button>
+            <button class="view-btn active" data-view="card" title="卡片摘要视图" aria-label="卡片视图">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+            </button>
+            <button class="view-btn" data-view="compact" title="紧凑列表视图" aria-label="紧凑视图">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="8" y1="6" x2="21" y2="6"></line><line x1="8" y1="12" x2="21" y2="12"></line><line x1="8" y1="18" x2="21" y2="18"></line><line x1="3" y1="6" x2="3.01" y2="6"></line><line x1="3" y1="12" x2="3.01" y2="12"></line><line x1="3" y1="18" x2="3.01" y2="18"></line></svg>
+            </button>
           </div>
         </div>
 

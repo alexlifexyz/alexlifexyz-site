@@ -19,8 +19,8 @@ elif nc -z 127.0.0.1 7890 2>/dev/null; then
   export http_proxy="http://127.0.0.1:7890"
 fi
 
-echo "🚀 开始构建全站与全文本搜索索引..."
+echo "开始构建全站与全文本搜索索引..."
 npm run build
 
-echo "☁️ 正在直传部署到 Cloudflare Pages..."
+echo "正在直传部署到 Cloudflare Pages..."
 npx wrangler pages deploy dist --project-name alexlifexyz-site "$@"

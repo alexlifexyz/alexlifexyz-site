@@ -45,6 +45,7 @@ When making decisions, use this order:
 - Prefer simple static architecture over premature dynamic systems.
 - Public content should come from curated, publish-ready material only.
 - Internal working docs, drafts, metrics, and raw sources should stay outside this repo unless intentionally exposed.
+- Strictly forbidden to use any emojis in UI, copy, markdown posts, or responses unless explicitly requested by the user. Maintain a professional, clean engineering tone.
 
 ## Context Read Order
 

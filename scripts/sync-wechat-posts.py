@@ -13,6 +13,17 @@ from pathlib import Path
 SOURCE_DIR = Path("/Users/mac/studio/20-content/wechat-content-workspace")
 TARGET_DIR = Path(__file__).resolve().parent.parent / "src" / "content" / "posts"
 
+EMOJI_PATTERN = re.compile(
+    r"[\U00010000-\U0010ffff\u2600-\u26ff\u2700-\u27bf\u2300-\u23ff\u2b50\ufe0f\u200d]",
+    flags=re.UNICODE
+)
+
+def strip_emojis(text: str) -> str:
+    if not text:
+        return ""
+    cleaned = EMOJI_PATTERN.sub("", text)
+    return re.sub(r"[ \t]+", " ", cleaned).strip()
+
 ORIGINALS = {
     "2026-03-23-old-java-keeps-reading-stacktraces.md",
     "2026-03-24-thinking-programmer-will-be-out-first.md",
@@ -113,12 +124,14 @@ def extract_article(p):
     title = re.sub(r"[\"']", "", title)
     title = re.sub(r"-(发布包|已发布|终稿.*|正文|发布版|初稿|增长版.*)$", "", title)
     title = re.sub(r"(发布包|已发布|终稿.*|正文|发布版|初稿|增长版.*)$", "", title).strip()
+    title = strip_emojis(title)
     
     if not title or title.lower() in ["readme", "index", "drafts", "published"]:
         # Try finding in parent directory name e.g. 16-程序员自杀式职业
         parent_name = p.parent.name
         if parent_name and not parent_name.isdigit():
             clean_parent = re.sub(r"^\d{2}-", "", parent_name)
+            clean_parent = strip_emojis(clean_parent)
             if len(clean_parent) > 2:
                 title = clean_parent
         else:
@@ -148,6 +161,7 @@ def extract_article(p):
             cleaned_lines.append(l)
 
     body = "\n".join(cleaned_lines).strip()
+    body = strip_emojis(body)
     if len(body) < 180:
         return None
         
@@ -160,6 +174,7 @@ def extract_article(p):
             break
     if not description:
         description = title
+    description = strip_emojis(description)
     description = description.replace('"', '\\"')
 
     category = determine_category(title, body)
@@ -183,7 +198,7 @@ def extract_article(p):
     }
 
 def main():
-    print(f"🚀 Starting WeChat articles synchronization...")
+    print("Starting WeChat articles synchronization...")
     valid_folders = [
         SOURCE_DIR / "published",
         SOURCE_DIR / "drafts" / "2026",
@@ -223,7 +238,7 @@ def main():
         flist.sort(key=lambda x: (x["score"], x["length"]), reverse=True)
         canonical.append(flist[0])
         
-    print(f"✨ Extracted {len(canonical)} unique canonical articles.")
+    print(f"Extracted {len(canonical)} unique canonical articles.")
     
     synced = 0
     for post in canonical:
@@ -246,7 +261,7 @@ draft: false
         target_file.write_text(full_content, encoding="utf-8")
         synced += 1
         
-    print(f"✅ Successfully synced {synced} new articles into {TARGET_DIR}!")
+    print(f"Successfully synced {synced} new articles into {TARGET_DIR}.")
 
 if __name__ == "__main__":
     main()

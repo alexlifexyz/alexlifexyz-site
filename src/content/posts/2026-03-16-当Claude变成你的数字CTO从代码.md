@@ -26,7 +26,7 @@ draft: false
 
 对于咱们“降临派”来说，这意味着生产力的再次跃迁：一个人就是一支技术舰队，而 Claude 就是那个帮你调度全局的数字 CTO。
 
-### 💡 每日一思
+### 每日一思
 > "The terminal is no longer a graveyard of text; it’s a living, generative dashboard for human-AI co-creation."
 > 
 > “终端不再是死气沉沉的文本坟场，它是人类与 AI 共同创造的、有生命的、生成式的仪表盘。”
