@@ -16,12 +16,9 @@ const {
 } = Astro.props;
 
 const navItems = [
-  { href: "/", label: "Home" },
-  { href: "/writing", label: "Writing" },
-  { href: "/projects", label: "Projects" },
-  { href: "/resume", label: "Resume" },
-  { href: "/about", label: "About" },
-  { href: "/now", label: "Now" },
+  { href: "/projects", label: "项目" },
+  { href: "/resume", label: "履历" },
+  { href: "/writing", label: "写作" },
 ];
 
 const liveItems = [
@@ -87,10 +84,13 @@ const liveItems = [
     <div class="app-frame">
       <header class="site-header">
         <div class="page-shell site-header-inner">
-          <a class="brand" href="/">
-            <span class="brand-mark"><BrandMark /></span>
-            <span class="brand-title">Alex<span class="ai">.ai</span></span>
-          </a>
+          <div class="header-brandline">
+            <a class="brand" href="/">
+              <span class="brand-mark"><BrandMark /></span>
+              <span class="brand-title">Alex<span class="ai">.ai</span></span>
+            </a>
+            <ThemeSwitch />
+          </div>
           <nav class="site-nav" aria-label="Primary">
             {
               navItems.map((item) => (
@@ -100,19 +100,16 @@ const liveItems = [
               ))
             }
           </nav>
-          <div class="header-end">
-            <nav class="site-live" aria-label="Live systems">
-              {
-                liveItems.map((item) => (
-                  <a class="nav-live" href={item.href} target="_blank" rel="noopener noreferrer">
-                    <i class="led" aria-hidden="true" />
-                    {item.label}
-                  </a>
-                ))
-              }
-            </nav>
-            <ThemeSwitch />
-          </div>
+          <nav class="site-live" aria-label="Live systems">
+            {
+              liveItems.map((item) => (
+                <a class="nav-live" href={item.href} target="_blank" rel="noopener noreferrer">
+                  <i class="led" aria-hidden="true" />
+                  {item.label}
+                </a>
+              ))
+            }
+          </nav>
         </div>
       </header>
       <main>

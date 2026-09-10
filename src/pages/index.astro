@@ -5,17 +5,9 @@ import HeroPipeline from "../components/HeroPipeline.astro";
 import LiveRack from "../components/LiveRack.astro";
 import StatusChips from "../components/StatusChips.astro";
 
-const posts = (await getCollection("posts", ({ data }) => !data.draft)).sort(
-  (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime(),
-);
-const featuredPosts = posts.slice(0, 3);
-
 const projects = await getCollection("projects");
 const rag = projects.find((p) => p.slug === "java-rag-lab");
 const chat = projects.find((p) => p.slug === "ai-assistant-suite");
-const rest = projects.filter(
-  (p) => p.slug !== "java-rag-lab" && p.slug !== "ai-assistant-suite",
-);
 ---
 
 <BaseLayout title="何占伟 / Alex — Java + RAG" path="/">
@@ -41,12 +33,12 @@ const rest = projects.filter(
 
   <section class="section band">
     <div class="page-shell">
-      <div class="section-header">
-        <span class="section-label mono">Live Production</span>
-        <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem;">
+      <div class="section-header section-header-row">
+        <div>
+          <span class="section-label mono">Live Production</span>
           <h2>在线系统</h2>
-          <a href="/projects" class="section-link">VIEW ALL -></a>
         </div>
+        <a href="/projects" class="section-link">全部项目</a>
       </div>
 
       <div class="live-grid">
@@ -82,80 +74,6 @@ const rest = projects.filter(
     </div>
   </section>
 
-  <section class="section">
-    <div class="page-shell">
-      <div class="section-header">
-        <span class="section-label mono">Featured Writing</span>
-        <div style="display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem;">
-          <h2>精选文章</h2>
-          <a href="/writing" class="section-link">VIEW ALL -></a>
-        </div>
-      </div>
-
-      <div class="item-list">
-        {
-          featuredPosts.map((post) => (
-            <div class="list-item">
-              <div class="item-date">
-                {post.data.pubDate
-                  .toLocaleDateString("zh-CN", { year: "numeric", month: "2-digit", day: "2-digit" })
-                  .replace(/\//g, ".")}
-              </div>
-              <div class="item-body">
-                <a href={`/writing/${post.slug}/`} style="text-decoration: none;">
-                  <h3>{post.data.title}</h3>
-                </a>
-                <p>{post.data.description}</p>
-                <div class="tag-row">
-                  <span class="tag" style="background: var(--signal-dim); color: var(--signal); border-color: transparent;">
-                    {post.data.category}
-                  </span>
-                  {post.data.tags.slice(0, 2).map((tag) => (
-                    <span class="tag">{tag}</span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          ))
-        }
-      </div>
-    </div>
-  </section>
-
-  {
-    rest.length > 0 && (
-      <section class="section" style="padding-top: 0;">
-        <div class="page-shell">
-          <div class="section-header">
-            <span class="section-label mono">Also Building</span>
-            <h2>其他项目</h2>
-          </div>
-          <div class="card-grid">
-            {rest.map((project) => (
-              <a class="card-link" href={`/projects/${project.slug}/`}>
-                <div class="panel" style="padding: 1.6rem; height: 100%; display: flex; flex-direction: column;">
-                  <div class="mono" style="font-size: 0.72rem; color: var(--text-dim); margin-bottom: 0.9rem; display: flex; justify-content: space-between; letter-spacing: 0.08em; text-transform: uppercase;">
-                    <span>{project.data.year}</span>
-                    <span style="color: var(--signal);">{project.data.status}</span>
-                  </div>
-                  <h3 style="margin-bottom: 0.75rem; font-size: 1.15rem;">{project.data.title}</h3>
-                  <p style="font-size: 0.92rem; color: var(--text-muted); flex-grow: 1; margin-bottom: 1.15rem;">
-                    {project.data.summary}
-                  </p>
-                  <div class="tag-row">
-                    {project.data.stack.map((item) => (
-                      <span class="tag">{item}</span>
-                    ))}
-                  </div>
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-    )
-  }
-
   <section class="section band">
     <div class="page-shell now-split">
       <div>
@@ -164,9 +82,10 @@ const rest = projects.filter(
         <p style="margin-top: 1.25rem; font-size: 1.05rem; color: var(--text-muted); line-height: 1.8;">
           公开主线是 Java RAG Lab：把文档问答做成可引用、可拒答、能给面试官点开的东西。站点本身也在迭代。
         </p>
-        <div style="margin-top: 2rem; display: flex; gap: 1.25rem; align-items: center; flex-wrap: wrap;">
+        <div class="now-actions">
+          <a class="btn btn-outline" href="/resume">查看履历</a>
           <a class="btn btn-outline" href="/now">详细状态</a>
-          <span class="mono" style="font-size: 0.75rem; color: var(--text-dim);">Last updated: 2026.09</span>
+          <span class="mono now-updated">Last updated: 2026.09</span>
         </div>
       </div>
       <div class="rack now-panel">

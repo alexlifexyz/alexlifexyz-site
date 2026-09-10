@@ -88,64 +88,67 @@ const techColumns = [
 ---
 
 <BaseLayout title="履历 | 何占伟" path="/resume">
-  <div class="content-wrap" style="padding: 8rem 0 12rem;">
-    <header style="margin-bottom: 6rem;">
-      <span class="section-label mono">Resume</span>
-      <h1 style="font-size: 3.5rem; letter-spacing: -0.05em; margin-bottom: 2rem;">何占伟</h1>
+  <div class="content-wrap page-block">
+    <header class="page-head">
+      <div class="page-head-row">
+        <span class="section-label mono">Resume</span>
+        <button class="btn btn-outline btn-compact print-hide" type="button" id="print-resume">
+          打印 / PDF
+        </button>
+      </div>
+      <h1 class="page-title">何占伟</h1>
       <p class="hero-lead">
         <strong>Java 后端 / Java + AI 应用落地。</strong> 成都。11 年。<br/>
         西南科技大学 · 计算机科学与技术 · 本科。公开证据：<a href="https://rag.alexai.top">rag.alexai.top</a>
       </p>
 
-      <div style="margin-top: 3rem; display: flex; flex-wrap: wrap; gap: 2.5rem; font-family: var(--mono); font-size: 0.85rem; color: var(--text-dim); background: var(--surface-muted); padding: 1.5rem 2rem; border-radius: var(--radius-sm); border: 1px solid var(--line);">
-        <div style="display: flex; gap: 0.75rem; align-items: center;">
-          <span style="color: var(--accent); font-weight: 600;">[Email]</span>
-          <span><a href="mailto:Alexlifexyz@gmail.com" style="color: var(--text); font-weight: 500;">Alexlifexyz@gmail.com</a></span>
+      <div class="resume-meta">
+        <div class="resume-meta-item">
+          <span class="resume-meta-key">[Email]</span>
+          <a href="mailto:Alexlifexyz@gmail.com">Alexlifexyz@gmail.com</a>
         </div>
-        <div style="display: flex; gap: 0.75rem; align-items: center;">
-          <span style="color: var(--accent); font-weight: 600;">[GitHub]</span>
-          <span><a href="https://github.com/alexlifexyz" target="_blank" rel="noreferrer" style="color: var(--text); font-weight: 500;">github.com/alexlifexyz</a></span>
+        <div class="resume-meta-item">
+          <span class="resume-meta-key">[GitHub]</span>
+          <a href="https://github.com/alexlifexyz" target="_blank" rel="noreferrer">github.com/alexlifexyz</a>
         </div>
-        <div style="display: flex; gap: 0.75rem; align-items: center;">
-          <span style="color: var(--accent); font-weight: 600;">[Location]</span>
-          <span style="color: var(--text);">成都</span>
+        <div class="resume-meta-item">
+          <span class="resume-meta-key">[Location]</span>
+          <span>成都</span>
         </div>
-        <div style="display: flex; gap: 0.75rem; align-items: center;">
-          <span style="color: var(--accent); font-weight: 600;">[Status]</span>
-          <span style="color: var(--text);">开放 Java / Java+AI 沟通</span>
+        <div class="resume-meta-item">
+          <span class="resume-meta-key">[Status]</span>
+          <span>开放 Java / Java+AI 沟通</span>
         </div>
       </div>
     </header>
 
-    <div style="display: grid; gap: 6rem;">
+    <div class="resume-stack">
       <section>
-        <h2 style="font-size: 1.5rem; margin-bottom: 3rem; border-bottom: 2px solid var(--text); padding-bottom: 0.75rem; border-left: none; padding-left: 0;">能核对的两件事</h2>
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 4rem;">
+        <h2 class="resume-h2">能核对的两件事</h2>
+        <div class="resume-cols-2">
           {coreStrengths.map((item) => (
-            <div style="display: grid; gap: 0.5rem;">
-              <h3 style="font-size: 1.15rem; color: var(--accent);">{item.title}</h3>
-              <p style="font-size: 0.95rem; color: var(--text-muted); line-height: 1.8;">{item.body}</p>
+            <div class="resume-point">
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
             </div>
           ))}
         </div>
       </section>
 
       <section>
-        <h2 style="font-size: 1.5rem; margin-bottom: 3rem; border-bottom: 2px solid var(--text); padding-bottom: 0.75rem; border-left: none; padding-left: 0;">任职经历</h2>
-        <div style="display: grid; gap: 4rem;">
+        <h2 class="resume-h2">任职经历</h2>
+        <div class="resume-timeline">
           {experiencePhases.map((phase) => (
             <div class="experience-item">
-              <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap;">
-                <h3 style="margin-bottom: 0; font-size: 1.3rem;">{phase.phase}</h3>
-                <span class="mono" style="font-size: 0.85rem; color: var(--accent); font-weight: 600;">{phase.period}</span>
+              <div class="experience-head">
+                <h3>{phase.phase}</h3>
+                <span class="mono experience-period">{phase.period}</span>
               </div>
-              <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.8; margin-bottom: 1.5rem;">
-                {phase.summary}
-              </p>
-              <ul style="list-style: none; padding-left: 0; display: grid; gap: 0.85rem; font-size: 0.95rem; color: var(--text-muted);">
+              <p class="experience-summary">{phase.summary}</p>
+              <ul class="experience-bullets">
                 {phase.bullets.map((bullet) => (
-                  <li style="display: flex; gap: 0.75rem; line-height: 1.7;">
-                    <span style="color: var(--accent); font-weight: bold;">›</span>
+                  <li>
+                    <span aria-hidden="true">›</span>
                     <span>{bullet}</span>
                   </li>
                 ))}
@@ -156,14 +159,14 @@ const techColumns = [
       </section>
 
       <section>
-        <h2 style="font-size: 1.5rem; margin-bottom: 3rem; border-bottom: 2px solid var(--text); padding-bottom: 0.75rem; border-left: none; padding-left: 0;">技能</h2>
-        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 4rem;">
+        <h2 class="resume-h2">技能</h2>
+        <div class="resume-cols-3">
           {techColumns.map((column) => (
             <div>
-              <h4 style="font-family: var(--mono); font-size: 0.85rem; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 1.5rem; letter-spacing: 0.05em;">{column.title}</h4>
-              <div style="display: flex; flex-direction: column; gap: 0.85rem; font-size: 0.95rem; color: var(--text);">
+              <h4 class="resume-col-title">{column.title}</h4>
+              <div class="resume-col-items">
                 {column.items.map((item) => (
-                  <span style="border-left: 2px solid var(--line); padding-left: 0.75rem;">{item}</span>
+                  <span>{item}</span>
                 ))}
               </div>
             </div>
@@ -172,55 +175,56 @@ const techColumns = [
       </section>
 
       <section>
-        <h2 style="font-size: 1.5rem; margin-bottom: 3rem; border-bottom: 2px solid var(--text); padding-bottom: 0.75rem; border-left: none; padding-left: 0;">公开可点</h2>
-        <div style="display: grid; gap: 1.5rem;">
-          <p style="color: var(--text-muted); line-height: 1.8; font-size: 1rem;">
-            下面两个都能打开。求职主证据是 Java RAG Lab。
-          </p>
-          <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 1rem;">
-            <div class="panel" style="padding: 2rem;">
-              <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
-                <span class="mono" style="font-size: 0.75rem; color: var(--accent); font-weight: 600;">PRIMARY</span>
-                <span class="mono" style="font-size: 0.75rem; color: var(--text-dim);">Java 21 · RAG</span>
-              </div>
-              <h3 style="font-size: 1.25rem; margin-bottom: 0.75rem;">Java RAG Lab</h3>
-              <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.5rem;">
-                文档问答。混合检索、引用、拒答。独立完成，2026。
-              </p>
-              <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                <a class="btn btn-primary" style="padding: 0.5rem 1rem; font-size: 0.85rem;" href="https://rag.alexai.top" target="_blank" rel="noreferrer">打开 Demo</a>
-                <a class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.85rem;" href="/projects/java-rag-lab/">说明</a>
-              </div>
+        <h2 class="resume-h2">公开可点</h2>
+        <p class="resume-note">
+          下面两个都能打开。求职主证据是 Java RAG Lab。
+        </p>
+        <div class="resume-cols-2 resume-live-grid">
+          <div class="panel resume-project">
+            <div class="resume-project-meta">
+              <span class="mono resume-project-flag">PRIMARY</span>
+              <span class="mono">Java 21 · RAG</span>
             </div>
+            <h3>Java RAG Lab</h3>
+            <p>文档问答。混合检索、引用、拒答。独立完成，2026。</p>
+            <div class="resume-project-actions print-hide">
+              <a class="btn btn-primary btn-compact" href="https://rag.alexai.top" target="_blank" rel="noreferrer">打开 Demo</a>
+              <a class="btn btn-outline btn-compact" href="/projects/java-rag-lab/">说明</a>
+            </div>
+            <p class="print-only mono">https://rag.alexai.top</p>
+          </div>
 
-            <div class="panel" style="padding: 2rem;">
-              <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
-                <span class="mono" style="font-size: 0.75rem; color: var(--text-dim); font-weight: 600;">ALSO LIVE</span>
-                <span class="mono" style="font-size: 0.75rem; color: var(--text-dim);">Spring Boot · Vue 3</span>
-              </div>
-              <h3 style="font-size: 1.25rem; margin-bottom: 0.75rem;">AI Assistant Suite</h3>
-              <p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 1.5rem;">
-                SSE 对话助手，用来练编排和流式接口，不是主证据。
-              </p>
-              <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-                <a class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.85rem;" href="https://chat.alexai.top" target="_blank" rel="noreferrer">打开 Demo</a>
-                <a class="btn btn-outline" style="padding: 0.5rem 1rem; font-size: 0.85rem;" href="/projects/ai-assistant-suite/">说明</a>
-              </div>
+          <div class="panel resume-project">
+            <div class="resume-project-meta">
+              <span class="mono">ALSO LIVE</span>
+              <span class="mono">Spring Boot · Vue 3</span>
             </div>
+            <h3>AI Assistant Suite</h3>
+            <p>SSE 对话助手，用来练编排和流式接口，不是主证据。</p>
+            <div class="resume-project-actions print-hide">
+              <a class="btn btn-outline btn-compact" href="https://chat.alexai.top" target="_blank" rel="noreferrer">打开 Demo</a>
+              <a class="btn btn-outline btn-compact" href="/projects/ai-assistant-suite/">说明</a>
+            </div>
+            <p class="print-only mono">https://chat.alexai.top</p>
           </div>
         </div>
       </section>
     </div>
 
-    <div class="rack" style="margin-top: 8rem; padding: 3rem; text-align: center;">
-      <h3 style="font-size: 1.6rem; margin-bottom: 1rem;">沟通</h3>
-      <p style="color: var(--text-muted); margin-bottom: 2.5rem; max-width: 580px; margin-inline: auto; line-height: 1.8;">
-        成都。Java 后端或 Java + AI 应用落地都可以聊。
-      </p>
-      <div style="display: flex; justify-content: center; gap: 1.25rem; flex-wrap: wrap;">
+    <div class="rack resume-cta">
+      <h3>沟通</h3>
+      <p>成都。Java 后端或 Java + AI 应用落地都可以聊。</p>
+      <div class="resume-cta-actions print-hide">
         <a class="btn btn-primary" href="mailto:Alexlifexyz@gmail.com">邮件</a>
         <a class="btn btn-outline" href="https://github.com/alexlifexyz" target="_blank" rel="noreferrer">GitHub</a>
       </div>
+      <p class="print-only mono">Alexlifexyz@gmail.com · github.com/alexlifexyz</p>
     </div>
   </div>
+
+  <script is:inline>
+    document.getElementById("print-resume")?.addEventListener("click", function () {
+      window.print();
+    });
+  </script>
 </BaseLayout>

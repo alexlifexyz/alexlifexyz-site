@@ -8,12 +8,12 @@ stack:
   - Shell
   - AI协作
 year: "2026"
-featured: true
+featured: false
 links:
   repo: "https://github.com/alexlifexyz/wechat-content-workspace"
 ---
 
-这是我当前最重要的公开工作流项目之一。
+给自己用的公众号写作工作流，不是求职主证据。
 
 它的目标不是做一个复杂 CMS，而是把内容生产中真正有价值的步骤沉淀成清晰、可迭代、可复盘的结构。
 
