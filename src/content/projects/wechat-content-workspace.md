@@ -13,7 +13,7 @@ links:
   repo: "https://github.com/alexlifexyz/wechat-content-workspace"
 ---
 
-给自己用的公众号写作工作流，不是求职主证据。
+供个人日常使用的公众号写作与选题沉淀工作流。
 
 它的目标不是做一个复杂 CMS，而是把内容生产中真正有价值的步骤沉淀成清晰、可迭代、可复盘的结构。
 

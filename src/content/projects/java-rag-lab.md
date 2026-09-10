@@ -1,6 +1,6 @@
 ---
 title: "Java RAG Lab"
-summary: "Java 21 文档问答：解析、混合检索、带引用回答；证据不足就拒答。可在 rag.alexai.top 直接试用。"
+summary: "Java 21 文档问答：解析、混合检索、带引用回答；依据不足防幻觉拒答。可在 rag.alexai.top 直接试用。"
 status: live
 stack:
   - Java 21
@@ -21,7 +21,7 @@ links:
 
 - **解析与切分**：Markdown / TXT / PDF 进库，按句切块。
 - **混合检索**：关键词（BM25）和向量召回一起用，减少制度名、型号这类漏检。
-- **引用与拒答**：回答带 chunk 级引用；相关证据不够就明确拒绝，不让模型编制度。
+- **引用与拒答**：回答带 chunk 级引用；相关依据不足就明确拒绝，不让模型编造制度。
 - **可替换客户端**：Embedding / LLM 是接口。没有 API key 也能跑测试和演示页。
 
 部署在 Docker + Cloudflare Tunnel 上，不暴露公网端口。

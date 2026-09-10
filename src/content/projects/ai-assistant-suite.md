@@ -14,7 +14,7 @@ links:
   repo: "https://github.com/alexlifexyz/ai-assistant-suite"
 ---
 
-一套能跑起来的对话助手，用来练 LLM 编排和流式接口，不是当前求职主证据。主证据是 [Java RAG Lab](/projects/java-rag-lab/)。
+一套完整的对话助手系统，用于实践 LLM 应用编排与高可靠流式接口。核心代表作为 [Java RAG Lab](/projects/java-rag-lab/)。
 
 里面有：
 
