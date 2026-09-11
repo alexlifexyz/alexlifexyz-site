@@ -16,8 +16,9 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://alexai.top");
-const socialImageURL = new URL("/social-card.jpg?v=3", Astro.site || "https://alexai.top");
-const squareThumbURL = new URL("/wechat-thumb.png?v=3", Astro.site || "https://alexai.top");
+const socialImageURL = new URL("/social-card.jpg?v=4", Astro.site || "https://alexai.top");
+const squareThumbURL = new URL("/wechat-thumb.png?v=4", Astro.site || "https://alexai.top");
+const appleTouchIconURL = new URL("/apple-touch-icon.png?v=4", Astro.site || "https://alexai.top");
 
 const navItems = [
   { href: "/projects", label: "项目" },
@@ -62,28 +63,29 @@ const liveItems = [
       })();
     </script>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=3" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=3" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=4" />
+    <link rel="apple-touch-icon" sizes="180x180" href={appleTouchIconURL} />
+    <link rel="apple-touch-icon-precomposed" href={appleTouchIconURL} />
 
     <!-- 微信 / QQ / 国内移动端微格式 (Microdata) -->
     <meta itemprop="name" content={title} />
     <meta itemprop="description" content={description} />
     <meta itemprop="image" content={squareThumbURL} />
 
-    <!-- OpenGraph / 社交卡片 -->
+    <!-- OpenGraph / 微信分享卡片 (优先使用 1:1 正方形缩略图，防止被微信强行裁切腰斩) -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:site_name" content="ALEX::AI" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={socialImageURL} />
-    <meta property="og:image:alt" content="何占伟 / Alex — 11 年 Java 后端，做 Agent 与 AI 落地" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image" content={squareThumbURL} />
+    <meta property="og:image:alt" content={title} />
+    <meta property="og:image:width" content="400" />
+    <meta property="og:image:height" content="400" />
+    <meta property="og:image:type" content="image/png" />
     <meta property="og:locale" content="zh_CN" />
 
-    <!-- Twitter Cards -->
+    <!-- Twitter Cards (保留 1200x630 宽屏科技卡片) -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:title" content={title} />
