@@ -10,18 +10,21 @@ const rag = projects.find((p) => p.slug === "java-rag-lab");
 const chat = projects.find((p) => p.slug === "ai-assistant-suite");
 ---
 
-<BaseLayout title="何占伟 / Alex — Java + RAG" path="/">
+<BaseLayout title="何占伟 / Alex — Java + Agent" path="/">
   <section class="hero">
     <div class="page-shell hero-identity">
       <div class="hero-content">
         <p class="hero-kicker">何占伟 · 成都 · alexai.top</p>
         <StatusChips />
-        <h1>11 年 Java 后端，<br />公开能核对的 RAG。</h1>
+        <h1>11 年 Java 后端，<br />做 Agent 与 AI 落地。</h1>
         <p class="hero-lead">
-          联想、平安、顺丰做过认证和自动化平台。现在线上可跑的是 Java RAG Lab：混合检索，回答带引用，依据不足就拒答。人在成都，Java 后端和 Java + AI 落地都可以谈。
+          联想、平安、顺丰做过认证和自动化平台。线上有对话 Agent，也有能引用、能拒答的 RAG。人在成都，Java 后端和 Agent 方向都可以谈。
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="https://rag.alexai.top" target="_blank" rel="noopener noreferrer">
+          <a class="btn btn-primary" href="https://chat.alexai.top" target="_blank" rel="noopener noreferrer">
+            打开 Chat
+          </a>
+          <a class="btn btn-outline" href="https://rag.alexai.top" target="_blank" rel="noopener noreferrer">
             打开 RAG Lab
           </a>
           <a class="btn btn-outline" href="/resume">查看履历</a>
@@ -80,7 +83,7 @@ const chat = projects.find((p) => p.slug === "ai-assistant-suite");
         <span class="section-label mono">Now</span>
         <h2>正在关注</h2>
         <p style="margin-top: 1.25rem; font-size: 1.05rem; color: var(--text-muted); line-height: 1.8;">
-          公开主线是 Java RAG Lab：文档问答能引用、能拒答，线上可以直接试。站点本身也在迭代。
+          公开主线是 Agent 与 AI 落地。对话助手和可核对的 RAG 都在线上，站点本身也在迭代。
         </p>
         <div class="now-actions">
           <a class="btn btn-outline" href="/resume">查看履历</a>
@@ -96,7 +99,7 @@ const chat = projects.find((p) => p.slug === "ai-assistant-suite");
           <span style="color: var(--text-dim);">[LLM]</span>
           <span>DeepSeek API / 可替换客户端</span>
           <span style="color: var(--text-dim);">[ARCH]</span>
-          <span>Hybrid RAG · Citations · Refuse</span>
+          <span>Agent · RAG · Citations</span>
           <span style="color: var(--text-dim);">[LANG]</span>
           <span>Java 21 / Spring Boot 3</span>
           <span style="color: var(--text-dim);">[INFRA]</span>
