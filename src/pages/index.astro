@@ -11,8 +11,8 @@ const chat = projects.find((p) => p.slug === "ai-assistant-suite");
 ---
 
 <BaseLayout
-  title="何占伟 / Alex — 11年Java架构 · 企业级RAG实践"
-  description="何占伟 / Alex，成都。11 年 Java 后端底座工程，专注企业级 RAG 检索增强架构与 AI 落地实践。在线演示：rag.alexai.top。"
+  title="何占伟 / Alex — Java 后端 · Agent 与 AI 落地"
+  description="何占伟 / Alex，成都。11 年 Java 后端，做 Agent 与 AI 落地。线上有对话助手与可核对的 RAG。"
   path="/"
 >
   <section class="hero">
@@ -55,12 +55,12 @@ const chat = projects.find((p) => p.slug === "ai-assistant-suite");
       btn.addEventListener("click", async function () {
         var textSpan = btn.querySelector(".share-btn-text");
         var shareData = {
-          title: "何占伟 / Alex — 11年Java架构 · 企业级RAG实践",
-          text: "何占伟 / Alex，成都。11 年 Java 后端底座工程，专注企业级 RAG 检索增强架构与 AI 落地实践。",
+          title: "何占伟 / Alex — Java 后端 · Agent 与 AI 落地",
+          text: "何占伟 / Alex，成都。11 年 Java 后端，做 Agent 与 AI 落地。",
           url: window.location.origin,
         };
 
-        if (navigator.share && /mobile|android|iphone|ipad|weixin/i.test(navigator.userAgent)) {
+        if (navigator.share && /mobile|android|iphone|ipad|micromessenger|weixin/i.test(navigator.userAgent)) {
           try {
             await navigator.share(shareData);
             return;
