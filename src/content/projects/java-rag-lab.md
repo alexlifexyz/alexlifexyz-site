@@ -15,9 +15,9 @@ links:
   repo: "https://github.com/alexlifexyz/java-rag-lab"
 ---
 
-这是我用来证明「Java 也能把企业文档问答做成工程」的公开项目，不是 Python notebook 演示。
+这是将企业文档问答落地为生产级架构的开源实践，基于 Java 21 与 Spring Boot 3 构建高可用工程闭环，而非仅停留在 Python 实验脚本。
 
-它做的事情很窄：
+核心工程特性：
 
 - **解析与切分**：Markdown / TXT / PDF 进库，按句切块。
 - **混合检索**：关键词（BM25）和向量召回一起用，减少制度名、型号这类漏检。
