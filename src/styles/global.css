@@ -541,6 +541,7 @@ html:not([data-theme="light"]) .theme-icon-moon {
   margin-bottom: 1.5rem;
   letter-spacing: -0.045em;
   font-weight: 600;
+  overflow-wrap: break-word;
 }
 
 .hero-lead {
