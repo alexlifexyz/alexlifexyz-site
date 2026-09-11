@@ -10,7 +10,11 @@ const rag = projects.find((p) => p.slug === "java-rag-lab");
 const chat = projects.find((p) => p.slug === "ai-assistant-suite");
 ---
 
-<BaseLayout title="何占伟 / Alex — Java + Agent" path="/">
+<BaseLayout
+  title="何占伟 / Alex — 11年Java架构 · 企业级RAG实践"
+  description="何占伟 / Alex，成都。11 年 Java 后端底座工程，专注企业级 RAG 检索增强架构与 AI 落地实践。在线演示：rag.alexai.top。"
+  path="/"
+>
   <section class="hero">
     <div class="page-shell hero-identity">
       <div class="hero-content">
@@ -28,11 +32,62 @@ const chat = projects.find((p) => p.slug === "ai-assistant-suite");
             打开 RAG Lab
           </a>
           <a class="btn btn-outline" href="/resume">查看履历</a>
+          <button class="btn btn-outline btn-share" type="button" id="share-site-btn" aria-label="分享本站链接">
+            <svg viewBox="0 0 24 24" fill="none" width="15" height="15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 6px;" aria-hidden="true">
+              <circle cx="18" cy="5" r="3"></circle>
+              <circle cx="6" cy="12" r="3"></circle>
+              <circle cx="18" cy="19" r="3"></circle>
+              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
+              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
+            </svg>
+            <span class="share-btn-text">分享</span>
+          </button>
         </div>
       </div>
       <HeroPipeline />
     </div>
   </section>
+
+  <script is:inline>
+    (function () {
+      var btn = document.getElementById("share-site-btn");
+      if (!btn) return;
+      btn.addEventListener("click", async function () {
+        var textSpan = btn.querySelector(".share-btn-text");
+        var shareData = {
+          title: "何占伟 / Alex — 11年Java架构 · 企业级RAG实践",
+          text: "何占伟 / Alex，成都。11 年 Java 后端底座工程，专注企业级 RAG 检索增强架构与 AI 落地实践。",
+          url: window.location.origin,
+        };
+
+        if (navigator.share && /mobile|android|iphone|ipad|weixin/i.test(navigator.userAgent)) {
+          try {
+            await navigator.share(shareData);
+            return;
+          } catch (err) {
+            if (err.name === "AbortError") return;
+          }
+        }
+
+        function feedback(msg) {
+          if (textSpan) textSpan.textContent = msg;
+          setTimeout(function () {
+            if (textSpan) textSpan.textContent = "分享";
+          }, 2200);
+        }
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(window.location.origin).then(function () {
+            feedback("链接已复制");
+          }).catch(function () {
+            feedback("请复制网址");
+          });
+        } else {
+          feedback("请复制网址");
+        }
+      });
+    })();
+  </script>
 
   <section class="section band">
     <div class="page-shell">
